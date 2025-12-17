@@ -1,0 +1,80 @@
+{
+  "Исключения": [
+    {
+      "question": "В чём отличие checked и unchecked исключений?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница между Exception и Error?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница между throw и throws?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего нужен try-with-resources? Что требуется от ресурса?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем вообще закрывать ресурсы?",
+      "answer": ""
+    },
+    {
+      "question": "Иерархия исключений: ключевые базовые классы и практики обработки.",
+      "answer": ""
+    },
+    {
+      "question": "Исключения: checked vs unchecked — различия и когда что использовать?",
+      "answer": ""
+    },
+    {
+      "question": "Как бы ты реализовал унификацию и преобразование checked-исключений JDBC в unchecked (без «магии»)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие два типа исключений есть в Java?",
+      "answer": ""
+    },
+    {
+      "question": "Какими способами обрабатывать исключения? Можно ли несколько catch?",
+      "answer": ""
+    },
+    {
+      "question": "Когда использовать собственные исключения?",
+      "answer": ""
+    },
+    {
+      "question": "Когда уместно использовать checked-исключения? Приведи бизнес-пример.",
+      "answer": ""
+    },
+    {
+      "question": "Кратко опиши иерархию исключений в Java (Throwable / Error / Exception).",
+      "answer": ""
+    },
+    {
+      "question": "Может ли быть try без catch? Можно ли несколько catch и в каком порядке их располагать?",
+      "answer": ""
+    },
+    {
+      "question": "Почему обычно не ловят Error?",
+      "answer": ""
+    },
+    {
+      "question": "Почему finally может не выполниться при Error?",
+      "answer": ""
+    },
+    {
+      "question": "Чем отличаются checked и unchecked исключения? Зачем Java поддерживает checked?",
+      "answer": ""
+    },
+    {
+      "question": "Что делать с checked-исключением, если не хотим try/catch?",
+      "answer": ""
+    },
+    {
+      "question": "Checked vs Runtime exceptions: когда и какие использовать? Плюсы и минусы подходов.",
+      "answer": ""
+    }
+  ]
+}
