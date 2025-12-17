@@ -1,0 +1,27 @@
+{
+  "Kafka / Messaging": [
+    { "question": "Что такое Kafka и зачем она нужна?", "answer": "" },
+    { "question": "Основные сущности Kafka: topic, partition, offset, consumer group.", "answer": "" },
+    { "question": "Как Kafka хранит сообщения?", "answer": "" },
+    { "question": "Что такое partition и зачем они нужны?", "answer": "" },
+    { "question": "Как выбирается partition при отправке сообщения?", "answer": "" },
+    { "question": "Зачем нужен ключ сообщения?", "answer": "" },
+    { "question": "Что такое consumer group?", "answer": "" },
+    { "question": "Как Kafka гарантирует порядок сообщений?", "answer": "" },
+    { "question": "Можно ли гарантировать порядок между партициями?", "answer": "" },
+    { "question": "Что такое rebalance и когда он происходит?", "answer": "" },
+    { "question": "Что такое offset и где он хранится?", "answer": "" },
+    { "question": "Кто коммитит offset и когда?", "answer": "" },
+    { "question": "Какие семантики доставки существуют (at-most-once, at-least-once, exactly-once)?", "answer": "" },
+    { "question": "Как добиться at-least-once?", "answer": "" },
+    { "question": "Как добиться exactly-once?", "answer": "" },
+    { "question": "Как бороться с дубликатами сообщений?", "answer": "" },
+    { "question": "Что такое idempotency?", "answer": "" },
+    { "question": "Что такое Kafka retention?", "answer": "" },
+    { "question": "Как удаляются сообщения из Kafka?", "answer": "" },
+    { "question": "Что такое dead-letter queue (DLQ)?", "answer": "" },
+    { "question": "Kafka vs RabbitMQ — когда что выбирать?", "answer": "" },
+    { "question": "Как масштабировать consumer'ов?", "answer": "" },
+    { "question": "Как мониторить Kafka (lag, throughput)?", "answer": "" }
+  ]
+}
