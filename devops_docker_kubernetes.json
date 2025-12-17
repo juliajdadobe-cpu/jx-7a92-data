@@ -1,0 +1,25 @@
+{
+  "DevOps / Docker / Kubernetes": [
+    { "question": "Что такое Docker и для чего он используется?", "answer": "" },
+    { "question": "Разница между Docker image и container.", "answer": "" },
+    { "question": "Что такое Dockerfile и зачем он нужен?", "answer": "" },
+    { "question": "Разница между инструкциями COPY и ADD в Dockerfile?", "answer": "" },
+    { "question": "Чем ENTRYPOINT отличается от CMD?", "answer": "" },
+    { "question": "Как располагать команды в Dockerfile для лучшего использования кэша?", "answer": "" },
+    { "question": "Что такое multi-stage build и зачем он нужен?", "answer": "" },
+    { "question": "Как уменьшить размер Docker-образа Java-приложения?", "answer": "" },
+    { "question": "Почему БД и приложение не кладут в один контейнер?", "answer": "" },
+    { "question": "Что такое docker-compose и когда он нужен?", "answer": "" },
+    { "question": "Можно ли собрать Java-приложение как WAR вместо fat JAR?", "answer": "" },
+    { "question": "Где и как деплоитесь: облако, виртуалки, Kubernetes?", "answer": "" },
+    { "question": "Что такое Kubernetes и какие задачи он решает?", "answer": "" },
+    { "question": "Какие базовые ресурсы Kubernetes ты знаешь?", "answer": "" },
+    { "question": "Что такое Pod и чем он отличается от контейнера?", "answer": "" },
+    { "question": "Что такое Deployment и ReplicaSet?", "answer": "" },
+    { "question": "Что такое Service в Kubernetes?", "answer": "" },
+    { "question": "Как Kubernetes масштабирует приложение?", "answer": "" },
+    { "question": "Что такое readiness и liveness probes?", "answer": "" },
+    { "question": "Что такое ConfigMap и Secret?", "answer": "" },
+    { "question": "Как обновлять приложение без даунтайма (rolling update)?", "answer": "" }
+  ]
+}
