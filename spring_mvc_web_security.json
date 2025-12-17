@@ -1,0 +1,24 @@
+{
+  "Spring MVC / Web / Security": [
+    { "question": "Что такое Spring MVC?", "answer": "" },
+    { "question": "Что такое DispatcherServlet?", "answer": "" },
+    { "question": "Как Spring определяет, какой контроллер вызвать?", "answer": "" },
+    { "question": "Что такое @Controller и @RestController?", "answer": "" },
+    { "question": "В чём разница между @RequestParam и @PathVariable?", "answer": "" },
+    { "question": "Как обрабатываются HTTP-запросы в Spring MVC?", "answer": "" },
+    { "question": "Какие HTTP-клиенты в Spring вы знаете?", "answer": "" },
+    { "question": "Чем RestTemplate отличается от WebClient?", "answer": "" },
+    { "question": "Когда выбирать WebFlux вместо MVC?", "answer": "" },
+    { "question": "Реактивный vs классический стек в Spring?", "answer": "" },
+    { "question": "Что такое фильтры и интерсепторы?", "answer": "" },
+    { "question": "Что такое CORS и зачем он нужен?", "answer": "" },
+    { "question": "Как настраивается CORS в Spring?", "answer": "" },
+    { "question": "Что такое Spring Security?", "answer": "" },
+    { "question": "Как работает цепочка фильтров Spring Security?", "answer": "" },
+    { "question": "Что такое Authentication и Authorization?", "answer": "" },
+    { "question": "Что такое SecurityContext?", "answer": "" },
+    { "question": "Что такое JWT и где его проверять?", "answer": "" },
+    { "question": "Где правильно завершать аутентификацию (terminate auth)?", "answer": "" },
+    { "question": "Как защитить REST API?", "answer": "" }
+  ]
+}
