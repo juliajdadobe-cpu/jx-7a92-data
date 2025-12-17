@@ -1,63 +1,228 @@
 {
   "Многопоточность": [
-    { "question": "Асинхронность vs многопоточность: в чём разница?", "answer": "" },
-    { "question": "В чём отличие Executors.newFixedThreadPool и Executors.newCachedThreadPool?", "answer": "" },
-    { "question": "В чём проблема подхода с synchronized и какие есть современные альтернативы?", "answer": "" },
-    { "question": "В чём проблема synchronized и зачем пакет java.util.concurrent?", "answer": "" },
-    { "question": "В чём разница eager vs lazy singleton и когда какой выбирать?", "answer": "" },
-    { "question": "Где ForkJoinPool уместен, а где использовать не стоит?", "answer": "" },
-    { "question": "Два потока вызывают разные synchronized-методы одного объекта — выполнятся ли параллельно?", "answer": "" },
-    { "question": "Для чего нужны пулы потоков и какие их виды знаешь?", "answer": "" },
-    { "question": "Для чего нужны volatile, synchronized, блокировки и высокоуровневые конкурентные структуры?", "answer": "" },
-    { "question": "Для чего ReentrantLock и ReadWriteLock?", "answer": "" },
-    { "question": "Для чего volatile и чего оно не гарантирует?", "answer": "" },
-    { "question": "Если только читаем/пишем переменную без инкремента — что использовать для гарантий видимости?", "answer": "" },
-    { "question": "Зачем знать про synchronized, если современные сервисы почти ничего не хранят в памяти?", "answer": "" },
-    { "question": "Зачем нужен ExecutorService и когда выбирать newFixedThreadPool vs newCachedThreadPool vs newSingleThreadExecutor?", "answer": "" },
-    { "question": "Зачем нужен ExecutorService?", "answer": "" },
-    { "question": "Зачем нужны атомарные типы (AtomicInteger, AtomicBoolean и т. п.)?", "answer": "" },
-    { "question": "Зачем нужны тред-пулы, виртуальные потоки и CompletableFuture, почему “голых” Thread недостаточно?", "answer": "" },
-    { "question": "Зачем нужны synchronized, volatile, Lock? Какую проблему они решают?", "answer": "" },
-    { "question": "Как в CompletableFuture обрабатываются исключения? Как работает exceptionally?", "answer": "" },
-    { "question": "Как выбираете размер пула потоков (executor)? На что ориентируетесь?", "answer": "" },
-    { "question": "Как дождаться завершения других потоков (Thread.join, CountDownLatch, CyclicBarrier)?", "answer": "" },
-    { "question": "Как достигается потокобезопасность в ConcurrentHashMap?", "answer": "" },
-    { "question": "Как запустить отправку уведомления асинхронно? Каким образом и в каком пуле потоков?", "answer": "" },
-    { "question": "Как корректно запустить поток (Thread, Runnable)?", "answer": "" },
-    { "question": "Как определить, какая из параллельных CompletableFuture «упала», и как собрать общий результат/ретраи?", "answer": "" },
-    { "question": "Как получить результат из Callable и чем опасен Future.get()?", "answer": "" },
-    { "question": "Как предотвратить deadlock? Какие стратегии применяются?", "answer": "" },
-    { "question": "Как работает ReadWriteLock (чтение параллельно, запись эксклюзивно)?", "answer": "" },
-    { "question": "Как работает synchronized метод vs synchronized (obj) блок?", "answer": "" },
-    { "question": "Как работает synchronized-блок/метод? Отличия статического/нестатического/блока?", "answer": "" },
-    { "question": "Как работает synchronized: метод vs блок?", "answer": "" },
-    { "question": "Как реализовать потокобезопасный синглтон? Что выбрать: synchronized-метод или блок?", "answer": "" },
-    { "question": "Как устроен ConcurrentHashMap и почему Hashtable считается неудачной?", "answer": "" },
-    { "question": "Какие атомарные классы в Java ты знаешь? Как они обеспечивают атомарность без блокировок (CAS)?", "answer": "" },
-    { "question": "Какие есть альтернативы synchronized (напр. Lock)?", "answer": "" },
-    { "question": "Какие ещё средства синхронизации, кроме synchronized, стоит знать?", "answer": "" },
-    { "question": "Какие синхронизаторы из java.util.concurrent знаешь (Lock, Semaphore и др.)? Зачем ReentrantLock поверх synchronized?", "answer": "" },
-    { "question": "Какие состояния потока существуют в Java и как происходят переходы между ними?", "answer": "" },
-    { "question": "Какие способы создания/управления потоками поддерживаются в Java?", "answer": "" },
-    { "question": "Какие типичные проблемы многопоточности (гонки данных, видимость, взаимные блокировки) встречаются?", "answer": "" },
-    { "question": "Какие типы пулов потоков знаешь? Чем ForkJoinPool отличается (work-stealing)?", "answer": "" },
-    { "question": "Какие типы тредпулов умеет Executors?", "answer": "" },
-    { "question": "Когда использовать synchronized, а когда высокоуровневые структуры (ConcurrentHashMap, BlockingQueue)?", "answer": "" },
-    { "question": "Кратко о модели памяти Java: happens-before, переупорядочивание, volatile.", "answer": "" },
-    { "question": "Модель памяти Java: что такое happens-before?", "answer": "" },
-    { "question": "Почему без volatile/синхронизации возможны «странные» наблюдения значений между потоками?", "answer": "" },
-    { "question": "Почему инкремент volatile int не атомарен?", "answer": "" },
-    { "question": "Почему контроллер с инкрементом обычного int не потокобезопасен? Как исправить?", "answer": "" },
-    { "question": "Почему volatile недостаточно вместо атомарных типов?", "answer": "" },
-    { "question": "Типичные проблемы многопоточности: что такое race condition, deadlock, livelock, starvation?", "answer": "" },
-    { "question": "Чем отличаются подходы с tryLock/тайм-аутом и с упорядочиванием захвата блокировок?", "answer": "" },
-    { "question": "Что такое атомарность в многопоточности на практическом примере?", "answer": "" },
-    { "question": "Что такое атомарность и консистентность в контексте многопоточности?", "answer": "" },
-    { "question": "Что такое атомарность и консистентность в многопоточности?", "answer": "" },
-    { "question": "Что такое дедлок, как его диагностировать и как от него избавиться?", "answer": "" },
-    { "question": "Что такое deadlock и как его избежать?", "answer": "" },
-    { "question": "Что такое deadlock и livelock? Примеры и как избегать.", "answer": "" },
-    { "question": "Что такое deadlock, livelock, starvation? Примеры и способы избежать.", "answer": "" },
-    { "question": "Что такое livelock и как его избегать (fair locks, tryLock с таймаутом и др.)?", "answer": "" }
+    {
+      "question": "В чём проблема подхода с synchronized и какие есть современные альтернативы?",
+      "answer": ""
+    },
+    {
+      "question": "В чём проблема synchronized и зачем пакет java.util.concurrent?",
+      "answer": ""
+    },
+    {
+      "question": "Два потока вызывают разные synchronized-методы одного объекта — выполнятся ли параллельно?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего нужны пулы потоков и какие их виды знаешь?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего нужны volatile, synchronized, блокировки и высокоуровневые конкурентные структуры?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего ReentrantLock и ReadWriteLock?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего volatile и чего оно не гарантирует?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем знать про synchronized, если современные сервисы почти ничего не хранят в памяти?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужен ExecutorService?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужны атомарные типы (AtomicInteger, AtomicBoolean и т. п.)?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужны тред-пулы, виртуальные потоки и CompletableFuture, почему “голых” Thread недостаточно?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужны synchronized, volatile, Lock? Какую проблему они решают?",
+      "answer": ""
+    },
+    {
+      "question": "Как выбираете размер пула потоков (executor)? На что ориентируетесь?",
+      "answer": ""
+    },
+    {
+      "question": "Как корректно запустить поток (Thread, Runnable)?",
+      "answer": ""
+    },
+    {
+      "question": "Как определить, какая из параллельных CompletableFuture «упала», и как собрать общий результат/ретраи?",
+      "answer": ""
+    },
+    {
+      "question": "Как получить результат из Callable и чем опасен Future.get()?",
+      "answer": ""
+    },
+    {
+      "question": "Как предотвратить deadlock? Какие стратегии применяются?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает ReadWriteLock (чтение параллельно, запись эксклюзивно)?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает synchronized метод vs synchronized (obj) блок?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает synchronized-блок/метод? Отличия статического/нестатического/блока?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает synchronized: метод vs блок?",
+      "answer": ""
+    },
+    {
+      "question": "Какие атомарные классы в Java ты знаешь? Как они обеспечивают атомарность без блокировок (CAS)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие есть альтернативы synchronized (напр. Lock)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие ещё средства синхронизации, кроме synchronized, стоит знать?",
+      "answer": ""
+    },
+    {
+      "question": "Какие синхронизаторы из java.util.concurrent знаешь (Lock, Semaphore и др.)? Зачем ReentrantLock поверх synchronized?",
+      "answer": ""
+    },
+    {
+      "question": "Какие состояния потока существуют в Java и как происходят переходы между ними?",
+      "answer": ""
+    },
+    {
+      "question": "Какие типы тредпулов умеет Executors?",
+      "answer": ""
+    },
+    {
+      "question": "Кратко о модели памяти Java: happens-before, переупорядочивание, volatile.",
+      "answer": ""
+    },
+    {
+      "question": "Модель памяти Java: что такое happens-before?",
+      "answer": ""
+    },
+    {
+      "question": "Почему без volatile/синхронизации возможны «странные» наблюдения значений между потоками?",
+      "answer": ""
+    },
+    {
+      "question": "Почему инкремент volatile int не атомарен?",
+      "answer": ""
+    },
+    {
+      "question": "Почему volatile недостаточно вместо атомарных типов?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое deadlock и как его избежать?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое deadlock и livelock? Примеры и как избегать.",
+      "answer": ""
+    },
+    {
+      "question": "Что такое deadlock, livelock, starvation? Примеры и способы избежать.",
+      "answer": ""
+    },
+    {
+      "question": "Пользовался ли атомиками? Зачем они, как работает CAS?",
+      "answer": ""
+    },
+    {
+      "question": "Условия вызова wait/notify/notifyAll. В чём разница между notify и notifyAll? Пример использования.",
+      "answer": ""
+    },
+    {
+      "question": "Чем Callable отличается от Runnable?",
+      "answer": ""
+    },
+    {
+      "question": "Чем ExecutorService лучше ручного управления потоками?",
+      "answer": ""
+    },
+    {
+      "question": "Чем Runnable отличается от Callable, как получить результат и почему Future.get() может «застопорить» поток?",
+      "answer": ""
+    },
+    {
+      "question": "Чем Runnable отличается от Callable?",
+      "answer": ""
+    },
+    {
+      "question": "Чем Thread.start() отличается от Thread.run()?",
+      "answer": ""
+    },
+    {
+      "question": "Чем wait/notify/notifyAll отличаются? Когда применяются?",
+      "answer": ""
+    },
+    {
+      "question": "Что даёт volatile с точки зрения happens-before и когда его уместно использовать?",
+      "answer": ""
+    },
+    {
+      "question": "Что делает ключевое слово volatile и когда его имеет смысл применять/не применять при synchronized?",
+      "answer": ""
+    },
+    {
+      "question": "Что делает volatile? Когда его недостаточно?",
+      "answer": ""
+    },
+    {
+      "question": "Что означает принцип happens-before в Java Memory Model?",
+      "answer": ""
+    },
+    {
+      "question": "Что означает happens-before для записи/чтения volatile и зачем это нужно?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое виртуальные потоки в Java и чем они соотносятся с реактивным программированием?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Callable, Future, CompletableFuture?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Future и чем опасен вызов get()?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Java Memory Model? Объясни отношение happens-before и основные случаи, когда оно гарантируется.",
+      "answer": ""
+    },
+    {
+      "question": "Что такое volatile-переменные в Java? Какие гарантии JMM они дают?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое volatile? На что распространяется гарантия видимости?",
+      "answer": ""
+    },
+    {
+      "question": "Atomic* классы: как работают и когда их применять?",
+      "answer": ""
+    },
+    {
+      "question": "Что делает планировщик потоков (thread scheduler) и имеет ли смысл менять приоритет потока (setPriority)?",
+      "answer": ""
+    }
   ]
 }

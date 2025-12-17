@@ -1,58 +1,112 @@
 {
   "DevOps / Docker / Kubernetes": [
-    { "question": "Что такое Docker и для чего он используется?", "answer": "" },
-    { "question": "Разница между Docker image и container.", "answer": "" },
-    { "question": "Что такое Dockerfile и зачем он нужен?", "answer": "" },
-    { "question": "Разница между инструкциями COPY и ADD в Dockerfile?", "answer": "" },
-    { "question": "Чем ENTRYPOINT отличается от CMD?", "answer": "" },
-    { "question": "Как располагать команды в Dockerfile для лучшего использования кэша?", "answer": "" },
-    { "question": "Что такое multi-stage build и зачем он нужен?", "answer": "" },
-    { "question": "Как уменьшить размер Docker-образа Java-приложения?", "answer": "" },
-    { "question": "Почему БД и приложение не кладут в один контейнер?", "answer": "" },
-    { "question": "Что такое docker-compose и когда он нужен?", "answer": "" },
-    { "question": "Можно ли собрать Java-приложение как WAR вместо fat JAR?", "answer": "" },
-    { "question": "Где и как деплоитесь: облако, виртуалки, Kubernetes?", "answer": "" },
-    { "question": "Что такое Kubernetes и какие задачи он решает?", "answer": "" },
-    { "question": "Какие базовые ресурсы Kubernetes ты знаешь?", "answer": "" },
-    { "question": "Что такое Pod и чем он отличается от контейнера?", "answer": "" },
-    { "question": "Что такое Deployment и ReplicaSet?", "answer": "" },
-    { "question": "Что такое Service в Kubernetes?", "answer": "" },
-    { "question": "Как Kubernetes масштабирует приложение?", "answer": "" },
-    { "question": "Что такое readiness и liveness probes?", "answer": "" },
-    { "question": "Что такое ConfigMap и Secret?", "answer": "" },
-    { "question": "Как обновлять приложение без даунтайма (rolling update)?", "answer": "" },
-    { "question": "Что такое CI и CD и в чём между ними разница?", "answer": "" },
-    { "question": "Какие этапы обычно входят в CI/CD пайплайн для Java-приложения?", "answer": "" },
-    { "question": "Почему Docker-образ должен быть минимального размера?", "answer": "" },
-    { "question": "Какие базовые образы предпочтительны для Java (distroless, alpine, slim)?", "answer": "" },
-    { "question": "Почему alpine может быть плохим выбором для JVM?", "answer": "" },
-    { "question": "Как JVM ведёт себя внутри контейнера и какие проблемы были до Java 10?", "answer": "" },
-    { "question": "Почему важно настраивать -Xmx/-Xms внутри Docker-контейнера?", "answer": "" },
-    { "question": "Что такое cgroups и как они влияют на Java-приложение?", "answer": "" },
-    { "question": "Что такое health-checkи и чем readiness probe отличается от liveness probe?", "answer": "" },
-    { "question": "Что произойдёт, если liveness probe настроен неправильно?", "answer": "" },
-    { "question": "Что такое rolling update и как Kubernetes выполняет его?", "answer": "" },
-    { "question": "Что такое blue-green deployment и чем он отличается от rolling update?", "answer": "" },
-    { "question": "Что такое canary deployment?", "answer": "" },
-    { "question": "Что такое ConfigMap и чем он отличается от Secret?", "answer": "" },
-    { "question": "Почему Secret не является полноценным средством безопасности?", "answer": "" },
-    { "question": "Что такое Horizontal Pod Autoscaler (HPA)?", "answer": "" },
-    { "question": "По каким метрикам обычно масштабируются Pod’ы?", "answer": "" },
-    { "question": "Почему autoscaling не решает все проблемы производительности?", "answer": "" },
-    { "question": "Что такое resource requests и limits в Kubernetes?", "answer": "" },
-    { "question": "Что произойдёт, если Pod превысит memory limit?", "answer": "" },
-    { "question": "Почему CPU limit может привести к деградации производительности JVM?", "answer": "" },
-    { "question": "Что такое StatefulSet и чем он отличается от Deployment?", "answer": "" },
-    { "question": "Когда использовать StatefulSet вместо Deployment?", "answer": "" },
-    { "question": "Что такое Service (ClusterIP, NodePort, LoadBalancer) и в чём разница?", "answer": "" },
-    { "question": "Что такое Ingress и зачем он нужен?", "answer": "" },
-    { "question": "Что такое Helm и какие проблемы он решает?", "answer": "" },
-    { "question": "Почему ручное управление YAML-файлами плохо масштабируется?", "answer": "" },
-    { "question": "Что такое immutable infrastructure?", "answer": "" },
-    { "question": "Почему в Kubernetes не принято «чинить» контейнеры вручную?", "answer": "" },
-    { "question": "Как логирование обычно организовано в Kubernetes-кластере?", "answer": "" },
-    { "question": "Почему контейнеры не должны писать логи в файлы?", "answer": "" },
-    { "question": "Как диагностировать падение Pod’а (CrashLoopBackOff)?", "answer": "" },
-    { "question": "Какие команды kubectl вы используете чаще всего для отладки?", "answer": "" }
+    {
+      "question": "Зачем в immutable-классе возвращать defensive copy из геттеров?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Spring Container / ApplicationContext и для чего он нужен?",
+      "answer": ""
+    },
+    {
+      "question": "Как собрать Spring Boot как WAR и когда это нужно?",
+      "answer": ""
+    },
+    {
+      "question": "Основные преимущества Spring Boot (executable JAR vs WAR, BOM, стартеры/автоконфигурация, централизованная конфигурация)?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем Testcontainers и когда пригодится?",
+      "answer": ""
+    },
+    {
+      "question": "Когда и как использовать Testcontainers для интеграционного тестирования?",
+      "answer": ""
+    },
+    {
+      "question": "Чем отличаются unit-тесты от интеграционных и когда использовать Testcontainers?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое dependency management и как избежать конфликтов версий?",
+      "answer": ""
+    },
+    {
+      "question": "Основные фазы жизненного цикла Maven.",
+      "answer": ""
+    },
+    {
+      "question": "Плюсы/минусы Gradle vs Maven.",
+      "answer": ""
+    },
+    {
+      "question": "package vs install vs deploy — когда что?",
+      "answer": ""
+    },
+    {
+      "question": "Можно ли собрать приложение как WAR вместо «fat JAR»? Как это настраивается в сборщике?",
+      "answer": ""
+    },
+    {
+      "question": "В чём различие деплоя приложения в виде JAR и WAR?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница команд ADD и COPY в Dockerfile?",
+      "answer": ""
+    },
+    {
+      "question": "Как располагать команды в Dockerfile, чтобы максимально использовать кэш слоёв?",
+      "answer": ""
+    },
+    {
+      "question": "Как упаковываете приложение: Docker→Kubernetes? Что из этого настраиваете сами, что — DevOps?",
+      "answer": ""
+    },
+    {
+      "question": "Какие типичные проблемы и на что обращать внимание при сборке Docker-образа?",
+      "answer": ""
+    },
+    {
+      "question": "Разница между инструкциями COPY и ADD в Dockerfile?",
+      "answer": ""
+    },
+    {
+      "question": "Разница между Docker image и container.",
+      "answer": ""
+    },
+    {
+      "question": "Разница между Dockerfile и docker-compose?",
+      "answer": ""
+    },
+    {
+      "question": "Чем ENTRYPOINT отличается от CMD?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое многоэтапная сборка (multi-stage) и зачем она?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Docker и для чего он используется в разработке/деплое?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое volume и bind-mount? Когда что использовать?",
+      "answer": ""
+    },
+    {
+      "question": "Как часто работаешь с Linux и что обычно делаешь?",
+      "answer": ""
+    },
+    {
+      "question": "Насколько глубоко знаком с Kubernetes ресурсами?",
+      "answer": ""
+    },
+    {
+      "question": "Где и как деплоитесь: облако/свои ДЦ, виртуалки, Kubernetes?",
+      "answer": ""
+    }
   ]
 }

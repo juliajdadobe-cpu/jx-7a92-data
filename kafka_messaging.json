@@ -1,27 +1,128 @@
 {
   "Kafka / Messaging": [
-    { "question": "Что такое Kafka и зачем она нужна?", "answer": "" },
-    { "question": "Основные сущности Kafka: topic, partition, offset, consumer group.", "answer": "" },
-    { "question": "Как Kafka хранит сообщения?", "answer": "" },
-    { "question": "Что такое partition и зачем они нужны?", "answer": "" },
-    { "question": "Как выбирается partition при отправке сообщения?", "answer": "" },
-    { "question": "Зачем нужен ключ сообщения?", "answer": "" },
-    { "question": "Что такое consumer group?", "answer": "" },
-    { "question": "Как Kafka гарантирует порядок сообщений?", "answer": "" },
-    { "question": "Можно ли гарантировать порядок между партициями?", "answer": "" },
-    { "question": "Что такое rebalance и когда он происходит?", "answer": "" },
-    { "question": "Что такое offset и где он хранится?", "answer": "" },
-    { "question": "Кто коммитит offset и когда?", "answer": "" },
-    { "question": "Какие семантики доставки существуют (at-most-once, at-least-once, exactly-once)?", "answer": "" },
-    { "question": "Как добиться at-least-once?", "answer": "" },
-    { "question": "Как добиться exactly-once?", "answer": "" },
-    { "question": "Как бороться с дубликатами сообщений?", "answer": "" },
-    { "question": "Что такое idempotency?", "answer": "" },
-    { "question": "Что такое Kafka retention?", "answer": "" },
-    { "question": "Как удаляются сообщения из Kafka?", "answer": "" },
-    { "question": "Что такое dead-letter queue (DLQ)?", "answer": "" },
-    { "question": "Kafka vs RabbitMQ — когда что выбирать?", "answer": "" },
-    { "question": "Как масштабировать consumer'ов?", "answer": "" },
-    { "question": "Как мониторить Kafka (lag, throughput)?", "answer": "" }
+    {
+      "question": "Какими функциональными интерфейсами пользуетесь? Примеры (Function, BiFunction, Supplier, Consumer и т.д.)",
+      "answer": ""
+    },
+    {
+      "question": "Объясни принцип PECS (producer-extends, consumer-super). Почему именно так?",
+      "answer": ""
+    },
+    {
+      "question": "Масштабирование в глубину: зачем и как разбивать таблицы по диапазонам (partitioning) по дате/ключу?",
+      "answer": ""
+    },
+    {
+      "question": "Как реализуешь пагинацию? Какие подходы (offset/limit, slice, cursor) и их trade-off’ы?",
+      "answer": ""
+    },
+    {
+      "question": "Что делать с «плохими» сообщениями: ретраи, DLT/DLQ, «парковка»?",
+      "answer": ""
+    },
+    {
+      "question": "В чём принципиальная разница между Kafka и RabbitMQ и когда что использовать?",
+      "answer": ""
+    },
+    {
+      "question": "Гарантии доставки в Kafka: at-most-once, at-least-once, exactly-once — отличия?",
+      "answer": ""
+    },
+    {
+      "question": "Где и как обрабатывать ошибки десериализации, таймауты и ребаланс в Kafka?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего используется Kafka? Базовые понятия: топики, партиции, consumer group?",
+      "answer": ""
+    },
+    {
+      "question": "Как выбираете ключ партиционирования сообщения в Kafka?",
+      "answer": ""
+    },
+    {
+      "question": "Как выбираете количество партиций в Kafka-топике и по какому принципу масштабируете их число?",
+      "answer": ""
+    },
+    {
+      "question": "Как достигается гарантия порядка сообщений в Kafka?",
+      "answer": ""
+    },
+    {
+      "question": "Как масштабировать воркеры при росте Kafka-лага? Как шардировать по пользователям/партициям?",
+      "answer": ""
+    },
+    {
+      "question": "Как обеспечиваете порядок обработки событий одного агрегата/идентификатора в Kafka?",
+      "answer": ""
+    },
+    {
+      "question": "Как отложить запуск @KafkaListener при старте приложения?",
+      "answer": ""
+    },
+    {
+      "question": "Как распределяются партиции при 10 partitions и 11 consumers? При 2 consumers и 10 partitions?",
+      "answer": ""
+    },
+    {
+      "question": "Как удаляются сообщения из Kafka? Что такое сегменты и retention?",
+      "answer": ""
+    },
+    {
+      "question": "Куда в Kafka пишутся сообщения (partition)? Как выбирается партиция (key → hash)?",
+      "answer": ""
+    },
+    {
+      "question": "Один топик/4 партиции/1 consumer: на сколько партиций подпишется? Что будет при добавлении второго?",
+      "answer": ""
+    },
+    {
+      "question": "Основные сущности Kafka: topic, partition, offset, consumer group.",
+      "answer": ""
+    },
+    {
+      "question": "Что такое ребаланс и когда он происходит?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое ребалансировка consumer group и к чему она приводит?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое consumer group и почему она важна для распределения чтения без дублей?",
+      "answer": ""
+    },
+    {
+      "question": "Kafka: как гарантировать, что сообщения одного пользователя читает один consumer?",
+      "answer": ""
+    },
+    {
+      "question": "Как обеспечить транзакционную целостность между БД и сообщением в Kafka?",
+      "answer": ""
+    },
+    {
+      "question": "Как решаете проблему: в транзакции нужно отправить сообщение в Kafka, а транзакция откатывается?",
+      "answer": ""
+    },
+    {
+      "question": "Какую пагинацию для ленты выбрать и почему курсорная лучше offset/limit? Какой ключ курсора?",
+      "answer": ""
+    },
+    {
+      "question": "Когда отдаёте приоритет синхронному взаимодействию (REST), а когда асинхронному (Kafka)?",
+      "answer": ""
+    },
+    {
+      "question": "Отличие Kafka от классических брокеров (RabbitMQ) концептуально.",
+      "answer": ""
+    },
+    {
+      "question": "Поток данных при публикации: запись метаданных + событие в Kafka. Как обеспечить атомарность (Transactional Outbox)?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Kafka и зачем брокер по сравнению с прямым REST-взаимодействием? Какой паттерн архитектуры реализуется?",
+      "answer": ""
+    }
   ]
 }

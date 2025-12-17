@@ -1,55 +1,316 @@
 {
   "Spring / Spring Boot": [
-    { "question": "Что такое Spring Framework и какую проблему он решает?", "answer": "" },
-    { "question": "Что такое Inversion of Control (IoC)?", "answer": "" },
-    { "question": "Что такое Dependency Injection (DI)?", "answer": "" },
-    { "question": "Чем IoC отличается от DI?", "answer": "" },
-    { "question": "Что такое Spring Container и ApplicationContext?", "answer": "" },
-    { "question": "Что такое Spring-бин?", "answer": "" },
-    { "question": "Какие способы создания бинов в Spring существуют?", "answer": "" },
-    { "question": "Какие аннотации делают класс кандидатом в бин?", "answer": "" },
-    { "question": "В чём разница @Component, @Service, @Repository, @Controller?", "answer": "" },
-    { "question": "Какие скоупы бинов существуют в Spring?", "answer": "" },
-    { "question": "Чем singleton отличается от prototype?", "answer": "" },
-    { "question": "Жизненный цикл бина в Spring?", "answer": "" },
-    { "question": "Для чего нужны @PostConstruct и @PreDestroy?", "answer": "" },
-    { "question": "Какие способы внедрения зависимостей существуют?", "answer": "" },
-    { "question": "Почему конструкторная инъекция предпочтительнее?", "answer": "" },
-    { "question": "Что такое @Qualifier и @Primary?", "answer": "" },
-    { "question": "Что такое Spring Boot и зачем он появился?", "answer": "" },
-    { "question": "Чем Spring Boot отличается от Spring Framework?", "answer": "" },
-    { "question": "Что такое auto-configuration?", "answer": "" },
-    { "question": "Что такое starter в Spring Boot?", "answer": "" },
-    { "question": "Что такое Spring Boot BOM?", "answer": "" },
-    { "question": "Как Spring Boot запускает встроенный Tomcat?", "answer": "" },
-    { "question": "Чем executable JAR отличается от WAR?", "answer": "" },
-    { "question": "Как работает component scanning?", "answer": "" },
-    { "question": "Что такое profiles в Spring?", "answer": "" },
-    { "question": "Как включать/выключать бины через @Conditional?", "answer": "" },
-    { "question": "Что такое Spring AOP?", "answer": "" },
-    { "question": "Как работает прокси в Spring (JDK vs CGLIB)?", "answer": "" },
-    { "question": "Что такое @Transactional и зачем она нужна?", "answer": "" },
-    { "question": "Почему @Transactional работает через прокси?", "answer": "" },
-    { "question": "Почему self-invocation ломает @Transactional?", "answer": "" },
-    { "question": "В чём разница между BeanFactory и ApplicationContext?", "answer": "" },
-    { "question": "Какие этапы жизненного цикла бина существуют в Spring?", "answer": "" },
-    { "question": "Когда и зачем используются BeanPostProcessor?", "answer": "" },
-    { "question": "Чем BeanFactoryPostProcessor отличается от BeanPostProcessor?", "answer": "" },
-    { "question": "Чем @Configuration отличается от @Component?", "answer": "" },
-    { "question": "Зачем нужны @Bean-методы и как они работают?", "answer": "" },
-    { "question": "Какие есть способы конфигурации бинов (XML, Java Config, component scan)?", "answer": "" },
-    { "question": "В каком порядке Spring выбирает способ внедрения зависимостей?", "answer": "" },
-    { "question": "Когда setter-инъекция оправдана?", "answer": "" },
-    { "question": "Почему field injection считается плохой практикой?", "answer": "" },
-    { "question": "Что произойдёт, если в контексте есть два бина одного типа?", "answer": "" },
-    { "question": "Как Spring разрешает неоднозначности при внедрении зависимостей?", "answer": "" },
-    { "question": "Как ведёт себя prototype-бин, внедрённый в singleton?", "answer": "" },
-    { "question": "Какие web-scopes существуют и когда они применяются?", "answer": "" },
-    { "question": "Какие ограничения есть у прокси в Spring (final-классы, final-методы)?", "answer": "" },
-    { "question": "Как Spring выбирает JDK Dynamic Proxy или CGLIB?", "answer": "" },
-    { "question": "Что такое circular dependency и как Spring с ней работает?", "answer": "" },
-    { "question": "В каких случаях Spring не может разрешить циклическую зависимость?", "answer": "" },
-    { "question": "Что делает аннотация @Lazy и когда её имеет смысл использовать?", "answer": "" },
-    { "question": "Для чего используется @DependsOn?", "answer": "" }  
+    {
+      "question": "Можно ли переопределить статический метод? Чем override отличается от hiding?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает Collections.unmodifiableList(...)?",
+      "answer": ""
+    },
+    {
+      "question": "Как удалить элементы из коллекции во время обхода, не ловя ConcurrentModificationException?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое fail-fast в коллекциях и когда возникает ConcurrentModificationException?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое fail-fast и как модифицировать коллекцию при итерации, избегая ConcurrentModificationException?",
+      "answer": ""
+    },
+    {
+      "question": "Типичные проблемы многопоточности: что такое race condition, deadlock, livelock, starvation?",
+      "answer": ""
+    },
+    {
+      "question": "Какие феномены возникают: dirty read, non-repeatable read, phantom read, lost update?",
+      "answer": ""
+    },
+    {
+      "question": "Уровни изоляции транзакций и феномены (dirty/non-repeatable/phantom).",
+      "answer": ""
+    },
+    {
+      "question": "Что такое dirty read, non-repeatable read, phantom read, lost update?",
+      "answer": ""
+    },
+    {
+      "question": "Почему вызов @Transactional метода «самого себя» может не сработать?",
+      "answer": ""
+    },
+    {
+      "question": "Почему самовызов метода с @Transactional не сработает и как это обойти?",
+      "answer": ""
+    },
+    {
+      "question": "Скоупы бинов: singleton, prototype, web-скоупы — отличия?",
+      "answer": ""
+    },
+    {
+      "question": "Скоупы бинов: singleton, prototype, web-скоупы.",
+      "answer": ""
+    },
+    {
+      "question": "Чем отличается Java-конфигурация (@Configuration + @Bean) от XML-конфигурации?",
+      "answer": ""
+    },
+    {
+      "question": "Чем Spring Boot отличается от Spring Framework?",
+      "answer": ""
+    },
+    {
+      "question": "Что делает @Transactional? Какой default propagation/isolation?",
+      "answer": ""
+    },
+    {
+      "question": "Что делает @Transactional? Ключевые параметры (propagation, isolation и др.)?",
+      "answer": ""
+    },
+    {
+      "question": "Что делает аннотация @Transactional? Какие у неё важные параметры (уровень изоляции, propagation и т. п.)?",
+      "answer": ""
+    },
+    {
+      "question": "Что делает propagation в @Transactional? Когда использовать REQUIRED vs REQUIRES_NEW vs NEVER и т.д.?",
+      "answer": ""
+    },
+    {
+      "question": "Что делают BeanPostProcessor и BeanFactoryPostProcessor, и когда срабатывает @PostConstruct?",
+      "answer": ""
+    },
+    {
+      "question": "Что с уничтожением бина: когда вызывается destroy-колбэк и для каких scope?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое «профиль» в Spring? Зачем он нужен?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое инверсия управления (IoC)? За счёт чего она реализована в Spring?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое IoC и DI? Как реализовано в Spring?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое IoC и DI? Чем они отличаются?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Spring AOP, как оно работает (прокси) и какие есть виды advice?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Spring-бин?",
+      "answer": ""
+    },
+    {
+      "question": "Два бина одного типа в контексте: чем грозит при инъекции и как разрешить?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего @PostConstruct и @PreDestroy? Когда уничтожается singleton-бин?",
+      "answer": ""
+    },
+    {
+      "question": "Жизненный цикл бина в Spring и точки расширения (BeanPostProcessor и т.п.)?",
+      "answer": ""
+    },
+    {
+      "question": "Жизненный цикл бина: этапы и роль @PostConstruct/@PreDestroy.",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужна @Primary и как работает?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужны аннотации @Qualifier и @Primary, где их указывать?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем Java-config с @Configuration и методами @Bean, если есть компонент-сканирование?",
+      "answer": ""
+    },
+    {
+      "question": "Как валидировать входные данные в Spring (Jakarta Bean Validation/аннотации, кастомные валидаторы, параметры запроса и тело)?",
+      "answer": ""
+    },
+    {
+      "question": "Как задать область видимости бина (singleton, prototype и др.)?",
+      "answer": ""
+    },
+    {
+      "question": "Как передать один бин в другой и когда предпочесть конструкторную инъекцию?",
+      "answer": ""
+    },
+    {
+      "question": "Как управлять порядком инициализации и зависимостями между бинами?",
+      "answer": ""
+    },
+    {
+      "question": "Как Spring находит бины (component scan)?",
+      "answer": ""
+    },
+    {
+      "question": "Как Spring находит и регистрирует бины (component scan, конфигурация)?",
+      "answer": ""
+    },
+    {
+      "question": "Как Spring создаёт и «собирает» бины (bean definition, автосвязывание)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие аннотации делают класс кандидатом в бин?",
+      "answer": ""
+    },
+    {
+      "question": "Какие области видимости (scopes) бинов в Spring ты знаешь и каков их жизненный цикл?",
+      "answer": ""
+    },
+    {
+      "question": "Какие скоупы бинов знаешь (singleton, prototype, request, session, websocket)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие скоупы бинов существуют в Spring? Коротко про каждый.",
+      "answer": ""
+    },
+    {
+      "question": "Какие способы внедрения бинов в Spring ты знаешь?",
+      "answer": ""
+    },
+    {
+      "question": "Какие способы конфигурации бинов в Spring существуют?",
+      "answer": ""
+    },
+    {
+      "question": "Какими способами создать бин в Spring и когда выбирать каждый?",
+      "answer": ""
+    },
+    {
+      "question": "Какой основной принцип в Spring (IoC/DI)? Как стартует контейнер и каков жизненный цикл бина?",
+      "answer": ""
+    },
+    {
+      "question": "Кто обрабатывает аннотации/хуки (BeanPostProcessor и пр.)?",
+      "answer": ""
+    },
+    {
+      "question": "Опиши жизненный цикл бина. Зачем разделение на *BeforeInitialization и *AfterInitialization у BeanPostProcessor?",
+      "answer": ""
+    },
+    {
+      "question": "Нужно ли вешать @Transactional на сервисный метод, если внутри JpaRepository.save()? Как транзакции работают по умолчанию в Spring Data?",
+      "answer": ""
+    },
+    {
+      "question": "Два метода с @Transactional в одном бине: что произойдёт при внутреннем вызове? Как это обойти?",
+      "answer": ""
+    },
+    {
+      "question": "Как должна работать @Transactional в показанном месте? Будет ли она реально активна? Почему?",
+      "answer": ""
+    },
+    {
+      "question": "Как поведёт себя транзакция, если @Transactional метод вызывается из @PostConstruct?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает @Transactional под капотом (прокси, правила rollback, readOnly, изоляция)?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает @Transactional: прокси, rollback-правила, уровень изоляции, readOnly?",
+      "answer": ""
+    },
+    {
+      "question": "Как рефакторить код со @Transactional, чтобы избежать долгих внешних вызовов внутри транзакции?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница между Spring и Spring Boot?",
+      "answer": ""
+    },
+    {
+      "question": "Где рекомендуется располагать класс с @SpringBootApplication и почему?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем @ConditionalOnProperty и как ею включать/выключать функциональность?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужен Spring Boot по сравнению с «голым» Spring?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужны Starter’ы и что они делают кроме «подтянуть зависимости»?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем появился Spring Boot по сравнению с Spring? Чем он лучше (стары, автоконфигурация, встроенный контейнер)?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем Spring Boot BOM (bill of materials) и чем он полезен?",
+      "answer": ""
+    },
+    {
+      "question": "Как в Spring Boot встраивается и запускается Tomcat по умолчанию?",
+      "answer": ""
+    },
+    {
+      "question": "Как отключить/включить бин в зависимости от окружения (профили, @Conditional, свойства)?",
+      "answer": ""
+    },
+    {
+      "question": "Как Spring Boot определяет, где сканировать бины без явного @ComponentScan?",
+      "answer": ""
+    },
+    {
+      "question": "Какие задачи решает Spring Boot помимо стартеров?",
+      "answer": ""
+    },
+    {
+      "question": "Какие стартеры Spring Boot используешь (web, data, test, logging и др.)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие Spring Boot-стартеры кладёшь в типичный бэкенд и зачем каждый?",
+      "answer": ""
+    },
+    {
+      "question": "Почему Spring Boot удобен для докеризации приложений?",
+      "answer": ""
+    },
+    {
+      "question": "Чем Spring Boot отличается от Spring? Что такое автоконфигурация?",
+      "answer": ""
+    },
+    {
+      "question": "Что даёт Spring Boot по сравнению с «чистым» Spring?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое автоконфигурация и чем она отличается от обычной конфигурации?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое автоконфигурация? Как её отключить/переопределить?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое стартеры Spring Boot и автоконфигурация? Чем она отличается от обычной конфигурации?",
+      "answer": ""
+    },
+    {
+      "question": "Как встроить систему разных скидок (много правил, возможно комбинируемых) в текущий алгоритм?",
+      "answer": ""
+    }
   ]
 }

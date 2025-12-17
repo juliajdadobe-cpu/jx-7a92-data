@@ -1,60 +1,84 @@
 {
   "JDBC / JPA / Hibernate": [
-    { "question": "Что такое JDBC и зачем он нужен?", "answer": "" },
-    { "question": "Из каких основных компонентов состоит JDBC API?", "answer": "" },
-    { "question": "Что такое DriverManager?", "answer": "" },
-    { "question": "Что такое Connection?", "answer": "" },
-    { "question": "Что такое Statement, PreparedStatement и CallableStatement?", "answer": "" },
-    { "question": "Почему PreparedStatement предпочтительнее Statement?", "answer": "" },
-    { "question": "Что такое SQL-инъекция и как от неё защищает PreparedStatement?", "answer": "" },
-    { "question": "Что такое ResultSet?", "answer": "" },
-    { "question": "Как в JDBC управлять транзакциями?", "answer": "" },
-    { "question": "Что такое JPA и какую проблему она решает?", "answer": "" },
-    { "question": "В чём разница между JPA и Hibernate?", "answer": "" },
-    { "question": "Что такое ORM?", "answer": "" },
-    { "question": "Что такое Entity в JPA?", "answer": "" },
-    { "question": "Что такое persistence context?", "answer": "" },
-    { "question": "Что такое кэш первого уровня?", "answer": "" },
-    { "question": "Что такое кэш второго уровня?", "answer": "" },
-    { "question": "Какие состояния жизненного цикла сущности существуют?", "answer": "" },
-    { "question": "Что такое LAZY и EAGER загрузка?", "answer": "" },
-    { "question": "В чём проблема N+1?", "answer": "" },
-    { "question": "Как бороться с проблемой N+1?", "answer": "" },
-    { "question": "Что такое fetch join?", "answer": "" },
-    { "question": "Что такое EntityGraph?", "answer": "" },
-    { "question": "Что такое @Transactional и как она работает?", "answer": "" },
-    { "question": "Почему транзакции в Spring работают через прокси?", "answer": "" },
-    { "question": "Почему самовызов @Transactional метода не работает?", "answer": "" },
-    { "question": "Что такое optimistic locking?", "answer": "" },
-    { "question": "Что такое pessimistic locking?", "answer": "" },
-    { "question": "Что делает аннотация @Version?", "answer": "" },
-    { "question": "Нужно ли вызывать save() после изменения сущности в транзакции?", "answer": "" },
-    { "question": "В чём разница save и saveAndFlush?", "answer": "" },
-    { "question": "Какие стратегии генерации ID существуют в JPA?", "answer": "" },
-    { "question": "Какую стратегию генерации ID рекомендуется использовать с PostgreSQL?", "answer": "" },
-    { "question": "Какие состояния жизненного цикла сущности JPA (transient, managed, detached, removed) и чем они отличаются?", "answer": "" },
-    { "question": "Как сущность переходит между состояниями жизненного цикла?", "answer": "" },
-    { "question": "Что такое dirty checking и как Hibernate определяет, что сущность была изменена?", "answer": "" },
-    { "question": "Почему Hibernate может обновить сущность без явного вызова save()?", "answer": "" },
-    { "question": "В чём разница между flush и commit?", "answer": "" },
-    { "question": "Когда Hibernate автоматически вызывает flush?", "answer": "" },
-    { "question": "Что такое persistence context и как он связан с EntityManager?", "answer": "" },
-    { "question": "Чем persistence context отличается от кэша второго уровня?", "answer": "" },
-    { "question": "Какие типы Cascade существуют и за что отвечает каждый (PERSIST, MERGE, REMOVE, REFRESH, DETACH)?", "answer": "" },
-    { "question": "В чём разница между CascadeType.REMOVE и orphanRemoval = true?", "answer": "" },
-    { "question": "Почему каскады могут быть опасны?", "answer": "" },
-    { "question": "Чем JPQL отличается от SQL?", "answer": "" },
-    { "question": "В чём разница между JPQL, HQL и native SQL?", "answer": "" },
-    { "question": "В каких случаях оправдано использование native SQL?", "answer": "" },
-    { "question": "Как работает кэш первого уровня и можно ли его отключить?", "answer": "" },
-    { "question": "Когда имеет смысл использовать кэш второго уровня?", "answer": "" },
-    { "question": "Почему стратегия IDENTITY плохо сочетается с batch insert?", "answer": "" },
-    { "question": "Как стратегия SEQUENCE влияет на производительность вставок?", "answer": "" },
-    { "question": "Как работает optimistic locking на практике?", "answer": "" },
-    { "question": "Когда pessimistic locking предпочтительнее optimistic?", "answer": "" },
-    { "question": "Что происходит при вызове EntityManager.detach()?", "answer": "" },
-    { "question": "Что делает EntityManager.clear() и чем отличается от detach()?", "answer": "" },
-    { "question": "Как @Transactional(readOnly = true) влияет на Hibernate?", "answer": "" },
-    { "question": "Как @Transactional влияет на flush mode?", "answer": "" }
+    {
+      "question": "Как бы ты реализовал унификацию и преобразование checked-исключений JDBC в unchecked (без «магии»)?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое оптимистическая (@Version) и пессимистическая блокировки?",
+      "answer": ""
+    },
+    {
+      "question": "Чем JPA/Hibernate отличается от «чистого» JDBC и когда предпочесть JDBC Template?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое JDBC? Зачем нужна спецификация и драйверы?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое PreparedStatement и как он помогает против SQL-инъекций?",
+      "answer": ""
+    },
+    {
+      "question": "При какой загрузке возникает проблема N+1 и как её решать (join fetch, entity graph, batch size)?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое проблема N+1 и как с ней бороться в Hibernate?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое проблема N+1, как её диагностировать и решать (fetch join/EntityGraph/LAZY/EAGER)?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое проблема N+1, как её находить и чем лечить (fetch join, entity graph, batch size)?",
+      "answer": ""
+    },
+    {
+      "question": "Чем работаете с БД (Spring Data JPA/JdbcTemplate)? Как пишете запросы (@Query, метод-нейминг)?",
+      "answer": ""
+    },
+    {
+      "question": "В Hibernate у сущности есть аннотация @Id со стратегией генерации. Какие стратегии генерации ID помните? Какую рекомендуется использовать с PostgreSQL и почему?",
+      "answer": ""
+    },
+    {
+      "question": "В Spring Data JPA: как написать простой метод репозитория, чтобы получить всех сотрудников по имени?",
+      "answer": ""
+    },
+    {
+      "question": "Где и как в коде задаются EntityGraph/NamedEntityGraph?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает fetch LAZY/EAGER? Проблема N+1 и решения.",
+      "answer": ""
+    },
+    {
+      "question": "Какие ещё способы задания EntityGraph есть?",
+      "answer": ""
+    },
+    {
+      "question": "Какие состояния жизненного цикла сущности JPA (transient, managed, detached, removed)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие стратегии загрузки связей в JPA/Hibernate (lazy/eager) и как они влияют на производительность?",
+      "answer": ""
+    },
+    {
+      "question": "Какой синтаксис можно использовать в @Query (HQL/JPQL или native SQL)?",
+      "answer": ""
+    },
+    {
+      "question": "Отличие save vs saveAndFlush.",
+      "answer": ""
+    },
+    {
+      "question": "Что такое SQL-инъекции, какой код к ним приводит и как защищаться в JDBC?",
+      "answer": ""
+    }
   ]
 }

@@ -1,34 +1,32 @@
 {
   "HTTP": [
-    { "question": "Что такое HTTP и для чего он используется?", "answer": "" },
-    { "question": "Из чего состоит HTTP-запрос?", "answer": "" },
-    { "question": "Из чего состоит HTTP-ответ?", "answer": "" },
-    { "question": "Что такое HTTP-метод и какие основные методы существуют?", "answer": "" },
-    { "question": "В чём разница между GET и POST?", "answer": "" },
-    { "question": "Какие методы считаются идемпотентными и почему?", "answer": "" },
-    { "question": "Что такое идемпотентность?", "answer": "" },
-    { "question": "Что такое safe-методы в HTTP?", "answer": "" },
-    { "question": "Что такое HTTP headers и зачем они нужны?", "answer": "" },
-    { "question": "Чем отличаются headers запроса и ответа?", "answer": "" },
-    { "question": "Что такое Content-Type и Accept?", "answer": "" },
-    { "question": "Что такое статус-коды HTTP и какие группы кодов существуют?", "answer": "" },
-    { "question": "Разница между 200, 201 и 204 статусами?", "answer": "" },
-    { "question": "В чём разница между 400 и 404?", "answer": "" },
-    { "question": "Когда используется статус 401, а когда 403?", "answer": "" },
-    { "question": "Что означает статус 500?", "answer": "" },
-    { "question": "Что такое body запроса и когда оно используется?", "answer": "" },
-    { "question": "Какими способами можно передать данные в HTTP-запросе?", "answer": "" },
-    { "question": "Что такое query parameters?", "answer": "" },
-    { "question": "Что такое path parameters?", "answer": "" },
-    { "question": "Что такое cookies и как они работают?", "answer": "" },
-    { "question": "Что такое session и чем она отличается от cookies?", "answer": "" },
-    { "question": "Что такое CORS и зачем он нужен?", "answer": "" },
-    { "question": "Что такое timeout в HTTP и какие виды таймаутов бывают?", "answer": "" },
-    { "question": "Что значит, что HTTP — stateless протокол?", "answer": "" },
-    { "question": "Чем HTTP отличается от HTTPS?", "answer": "" },
-    { "question": "Что происходит во время TLS-handshake?", "answer": "" },
-    { "question": "Что такое REST и на каких принципах он основан?", "answer": "" },
-    { "question": "Чем REST отличается от RPC?", "answer": "" },
-    { "question": "Что такое versioning API и зачем он нужен?", "answer": "" }
+    {
+      "question": "Что значит, что HTTP «синхронный» на уровне протокола?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое connect/read timeout и зачем их настраивать?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница REST и RPC подходов?",
+      "answer": ""
+    },
+    {
+      "question": "Как бы спроектировать идемпотентную REST-операцию?",
+      "answer": ""
+    },
+    {
+      "question": "Как из сервиса отправить HTTP-запрос в другой сервис? Какими клиентами/подходами можно пользоваться?",
+      "answer": ""
+    },
+    {
+      "question": "По HTTP: какими способами можно передать данные на сервер?",
+      "answer": ""
+    },
+    {
+      "question": "Какие виды интеграций используете (REST/gRPC, брокеры, прямой доступ к БД, файлы) и когда какой выбрать?",
+      "answer": ""
+    }
   ]
 }

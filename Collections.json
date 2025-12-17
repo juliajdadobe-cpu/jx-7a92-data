@@ -1,113 +1,448 @@
 {
   "Коллекции": [
-    { "question": "Амортизированная сложность добавления в конец ArrayList и когда она нарушается?", "answer": "" },
-    { "question": "В чём преимущество удаления в LinkedList по сравнению с ArrayList?", "answer": "" },
-    { "question": "В чём различие между ArrayList и LinkedList (структура и доступ по индексу)?", "answer": "" },
-    { "question": "В чём различия ArrayList и LinkedList по операциям вставки/доступа?", "answer": "" },
-    { "question": "В чём разница между ArrayList и LinkedList? Когда какой использовать?", "answer": "" },
-    { "question": "В чём разница ArrayList и LinkedList? Сложности операций доступа/вставки/удаления?", "answer": "" },
-    { "question": "Допускают ли они null-ключ/значение?", "answer": "" },
-    { "question": "Иерархия коллекций Java: основные интерфейсы и их роли (Collection, List, Set, Queue, Map).", "answer": "" },
-    { "question": "Как в Java устроен LinkedList?", "answer": "" },
-    { "question": "Как меняется сложность операций в HashMap при коллизиях и когда бакет становится деревом?", "answer": "" },
-    { "question": "Как можно “потерять” объект в HashMap при использовании изменяемого ключа?", "answer": "" },
-    { "question": "Как отсортировать Map по значениям, а не по ключам?", "answer": "" },
-    { "question": "Как проверить, что сортировка по значениям действительно стабильна и корректна для одинаковых значений?", "answer": "" },
-    { "question": "Как работает Collections.unmodifiableList(...)?", "answer": "" },
-    { "question": "Как работает HashMap.put(K,V) пошагово?", "answer": "" },
-    { "question": "Как работает HashSet, как достигается O(1), что происходит при коллизиях и какие условия нужны для O(1)?", "answer": "" },
-    { "question": "Как реализован TreeSet под капотом? Какие ограничения накладывает?", "answer": "" },
-    { "question": "Как реализовать компаратор для сортировки Map по значению через TreeMap?", "answer": "" },
-    { "question": "Как сделать ключ иммутабельным (требования к классу-ключу)?", "answer": "" },
-    { "question": "Как сделать коллекцию потокобезопасной? Какие способы есть (concurrent-коллекции, Collections.synchronized*) ?", "answer": "" },
-    { "question": "Как удалить элементы из коллекции во время обхода, не ловя ConcurrentModificationException?", "answer": "" },
-    { "question": "Как устроена HashMap внутри: бакеты, хеш, индекс, коллизии, порог дерева?", "answer": "" },
-    { "question": "Как устроена HashMap под капотом (бакеты, хэш, коллизии, деревоизация)?", "answer": "" },
-    { "question": "Как устроена HashMap? Что такое коллизия и когда она происходит?", "answer": "" },
-    { "question": "Как устроены ноды LinkedList (какие ссылки они содержат)?", "answer": "" },
-    { "question": "Как LinkedList обеспечивает быстрый доступ к первому/последнему элементу?", "answer": "" },
-    { "question": "Какие коллекции знаете? Какова иерархия интерфейсов коллекций?", "answer": "" },
-    { "question": "Какие основные интерфейсы и реализации есть в Collections Framework?", "answer": "" },
-    { "question": "Какие потокобезопасные альтернативы есть у HashMap?", "answer": "" },
-    { "question": "Какие потокобезопасные коллекции вы знаете/использовали (java.util.concurrent, ConcurrentHashMap, CopyOnWriteArrayList и др.)?", "answer": "" },
-    { "question": "Какие потокобезопасные коллекции знаешь (ConcurrentHashMap, BlockingQueue и т.д.)?", "answer": "" },
-    { "question": "Какие потокобезопасные коллекции знаешь?", "answer": "" },
-    { "question": "Какие потокобезопасные коллекции знаешь? Как достигается безопасность в ConcurrentHashMap?", "answer": "" },
-    { "question": "Какие реализации Set/Map знаешь и когда использовать TreeSet/TreeMap?", "answer": "" },
-    { "question": "Какие требования к ключам TreeMap?", "answer": "" },
-    { "question": "Какие требования к объектам-ключам в Map следует соблюдать?", "answer": "" },
-    { "question": "Какими свойствами должен обладать объект-ключ для использования в HashMap?", "answer": "" },
-    { "question": "Какова амортизированная сложность добавления элемента в Map? Каков худший случай?", "answer": "" },
-    { "question": "Какова амортизированная сложность операций в HashMap и что меняется при коллизиях/деревьях?", "answer": "" },
-    { "question": "Какова асимптотика доступа к середине в ArrayList и LinkedList?", "answer": "" },
-    { "question": "Какова сложность добавления в конец/начало для ArrayList и LinkedList?", "answer": "" },
-    { "question": "Какова сложность доступа к первому и последнему элементам LinkedList?", "answer": "" },
-    { "question": "Какова сложность доступа к первому/последнему элементу в LinkedList и почему?", "answer": "" },
-    { "question": "Какова сложность доступа к последнему элементу LinkedList?", "answer": "" },
-    { "question": "Какова сложность операций в HashMap в среднем и при деградации?", "answer": "" },
-    { "question": "Какова сложность поиска в LinkedList по индексу? Всегда ли она линейная?", "answer": "" },
-    { "question": "Какова средняя и худшая сложность вставки и получения в HashMap?", "answer": "" },
-    { "question": "Когда бакет в HashMap превращается в дерево и обратно?", "answer": "" },
-    { "question": "Когда выбирать ArrayList, а когда LinkedList и почему?", "answer": "" },
-    { "question": "Когда выбирать LinkedList вместо ArrayList и наоборот? Примеры сценариев.", "answer": "" },
-    { "question": "Когда уместен CopyOnWriteArrayList и каковы его минусы?", "answer": "" },
-    { "question": "Корректно ли использовать массив (int[]) как ключ мапы?", "answer": "" },
-    { "question": "Может ли два разных hashCode попасть в один бакет?", "answer": "" },
-    { "question": "Можно ли использовать null как ключ? Где нельзя?", "answer": "" },
-    { "question": "Опиши иерархию коллекций (List/Set/Map и основные реализации).", "answer": "" },
-    { "question": "Потокобезопасные коллекции: ConcurrentHashMap, CopyOnWriteArrayList — когда применять и ограничения.", "answer": "" },
-    { "question": "Почему в HashMap ключами часто делают String?", "answer": "" },
-    { "question": "Почему изменение полей ключа после помещения в HashMap приводит к проблемам?", "answer": "" },
-    { "question": "Почему изменение состояния ключа после помещения в Map опасно?", "answer": "" },
-    { "question": "Почему изменяемые ключи плохи для HashMap?", "answer": "" },
-    { "question": "Почему мутабельные ключи в HashMap — это проблема?", "answer": "" },
-    { "question": "Почему не рекомендуется использовать Hashtable?", "answer": "" },
-    { "question": "Почему плохо менять поля ключа в Map/элемент в Set после добавления?", "answer": "" },
-    { "question": "Почему сортировка TreeMap по умолчанию работает по ключам, и как изменить это поведение?", "answer": "" },
-    { "question": "Почему удаление/вставка в начало/середину ArrayList дорогостоящие?", "answer": "" },
-    { "question": "Почему Map не относится к иерархии Collection?", "answer": "" },
-    { "question": "Почему String считается хорошим ключом для HashMap?", "answer": "" },
-    { "question": "Разница HashMap, LinkedHashMap, TreeMap.", "answer": "" },
-    { "question": "Разница HashSet и TreeSet.", "answer": "" },
-    { "question": "Сложности операций ArrayList: get, set, add(index), remove(index) — объясните почему.", "answer": "" },
-    { "question": "Сложности операций LinkedList: addLast, add(index), remove(index), get(index) — поясните.", "answer": "" },
-    { "question": "Чем отличаются HashMap и Hashtable?", "answer": "" },
-    { "question": "Чем различаются ArrayList и LinkedList по вставке/удалению, индексации и памяти?", "answer": "" },
-    { "question": "Чем ArrayList отличается от LinkedList?", "answer": "" },
-    { "question": "Чем HashSet концептуально отличается от HashMap?", "answer": "" },
-    { "question": "Чем HashSet связан с HashMap?", "answer": "" },
-    { "question": "Чем LinkedHashMap отличается от HashMap? Что даёт режим access-order?", "answer": "" },
-    { "question": "Чем LinkedHashSet/LinkedHashMap отличаются от HashSet/HashMap (порядок итерации)?", "answer": "" },
-    { "question": "Чем List отличается от Set концептуально?", "answer": "" },
-    { "question": "Чем List, Set и Queue концептуально отличаются?", "answer": "" },
-    { "question": "Чем Map отличается от остальных коллекций в общей иерархии?", "answer": "" },
-    { "question": "Чем TreeSet/TreeMap отличаются от HashSet/HashMap (сортировка, требования к ключам)?", "answer": "" },
-    { "question": "Что будет, если ключ в HashMap изменился после вставки?", "answer": "" },
-    { "question": "Что может произойти, если использовать изменяемый (mutable) объект в качестве ключа HashMap?", "answer": "" },
-    { "question": "Что можно рассказать о HashMap, TreeMap, LinkedHashMap и их основе?", "answer": "" },
-    { "question": "Что происходит при расширении HashMap (rehash)? Как меняются бакеты и элементы?", "answer": "" },
-    { "question": "Что такое бакеты (buckets) в HashMap и как там хранятся пары ключ-значение?", "answer": "" },
-    { "question": "Что такое коллизии в HashMap и как они разрешаются?", "answer": "" },
-    { "question": "Что такое коллизия в HashMap и что при этом происходит?", "answer": "" },
-    { "question": "Что такое коллизия в HashMap? Как она обрабатывается (список/дерево)? Какие временные сложности операций?", "answer": "" },
-    { "question": "Что такое CopyOnWriteArrayList, когда его применять и каковы его минусы?", "answer": "" },
-    { "question": "Что такое fail-fast в коллекциях и когда возникает ConcurrentModificationException?", "answer": "" },
-    { "question": "Что такое fail-fast и как модифицировать коллекцию при итерации, избегая ConcurrentModificationException?", "answer": "" },
-    { "question": "Что такое fail-fast и fail-safe итераторы?", "answer": "" },
-    { "question": "Что такое fail-fast итераторы? Что будет при удалении во время обхода?", "answer": "" },
-    { "question": "Что такое fail-fast поведение коллекций и зачем оно нужно?", "answer": "" },
-    { "question": "Что такое fail-fast при итерации коллекций?", "answer": "" },
-    { "question": "Что такое HashMap и как она устроена на высоком уровне?", "answer": "" },
-    { "question": "Что такое HashSet/LinkedHashSet/TreeSet и когда что использовать?", "answer": "" },
-    { "question": "Что такое Map? Какие реализации знаешь и чем отличаются (HashMap, LinkedHashMap, TreeMap)?", "answer": "" },
-    { "question": "Что такое Queue/Deque и какие операции они дают?", "answer": "" },
-    { "question": "Что такое TreeMap/TreeSet и зачем нужны Comparator/Comparable?", "answer": "" },
-    { "question": "Является ли Map коллекцией и почему?", "answer": "" },
-    { "question": "ArrayList vs LinkedList: устройство и когда что выбирать?", "answer": "" },
-    { "question": "ArrayList: как устроен внутри, как происходит динамическое расширение?", "answer": "" },
-    { "question": "EnumSet: когда применять и чем он эффективен?", "answer": "" },
-    { "question": "Hashtable vs HashMap: различия и актуальность в 202x.", "answer": "" },
-    { "question": "LinkedList: структура узла, хранение ссылок, двусвязность.", "answer": "" },
-    { "question": "Map: зачем интерфейс выделен отдельно от Collection?", "answer": "" }
+    {
+      "question": "Какой ключевой default-метод появился в Java 8 (в Collection)?",
+      "answer": ""
+    },
+    {
+      "question": "Можно ли вызвать приватный метод/изменить приватное поле? Что нужно сделать (например, setAccessible)?",
+      "answer": ""
+    },
+    {
+      "question": "Можно ли свой класс использовать в for-each? Что нужно реализовать (Iterable/Iterator)?",
+      "answer": ""
+    },
+    {
+      "question": "Работает ли for-each без итератора? Как связаны Iterable и Iterator?",
+      "answer": ""
+    },
+    {
+      "question": "Разница между интерфейсами Iterable и Iterator?",
+      "answer": ""
+    },
+    {
+      "question": "Реализуйте мини-Optional: дженерик-класс с value, методами map и filter (как в java.util.Optional).",
+      "answer": ""
+    },
+    {
+      "question": "Чем String отличается от StringBuilder и StringBuffer по назначению и потокобезопасности?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое цикл enhanced for (for-each) и чем он обязан интерфейсу Iterable?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Iterator и какие преимущества он даёт?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Iterator и Iterable?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего нужен hashCode() и как его используют хеш-коллекции (HashMap, HashSet)?",
+      "answer": ""
+    },
+    {
+      "question": "Амортизированная сложность добавления в конец ArrayList и когда она нарушается?",
+      "answer": ""
+    },
+    {
+      "question": "В чём преимущество удаления в LinkedList по сравнению с ArrayList?",
+      "answer": ""
+    },
+    {
+      "question": "В чём различия ArrayList и LinkedList по операциям вставки/доступа?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница между ArrayList и LinkedList? Когда какой использовать?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница ArrayList и LinkedList? Сложности операций доступа/вставки/удаления?",
+      "answer": ""
+    },
+    {
+      "question": "Иерархия коллекций Java: основные интерфейсы и их роли (Collection, List, Set, Queue, Map).",
+      "answer": ""
+    },
+    {
+      "question": "Как в Java устроен LinkedList?",
+      "answer": ""
+    },
+    {
+      "question": "Как меняется сложность операций в HashMap при коллизиях и когда бакет становится деревом?",
+      "answer": ""
+    },
+    {
+      "question": "Как можно “потерять” объект в HashMap при использовании изменяемого ключа?",
+      "answer": ""
+    },
+    {
+      "question": "Как отсортировать Map по значениям, а не по ключам?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает HashMap.put(K,V) пошагово?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает HashSet, как достигается O(1), что происходит при коллизиях и какие условия нужны для O(1)?",
+      "answer": ""
+    },
+    {
+      "question": "Как реализован TreeSet под капотом? Какие ограничения накладывает?",
+      "answer": ""
+    },
+    {
+      "question": "Как реализовать компаратор для сортировки Map по значению через TreeMap?",
+      "answer": ""
+    },
+    {
+      "question": "Как сделать коллекцию потокобезопасной? Какие способы есть (concurrent-коллекции, Collections.synchronized*) ?",
+      "answer": ""
+    },
+    {
+      "question": "Как устроена HashMap под капотом (бакеты, хэш, коллизии, деревоизация)?",
+      "answer": ""
+    },
+    {
+      "question": "Как устроена HashMap? Что такое коллизия и когда она происходит?",
+      "answer": ""
+    },
+    {
+      "question": "Как устроены ноды LinkedList (какие ссылки они содержат)?",
+      "answer": ""
+    },
+    {
+      "question": "Как LinkedList обеспечивает быстрый доступ к первому/последнему элементу?",
+      "answer": ""
+    },
+    {
+      "question": "Какие основные интерфейсы и реализации есть в Collections Framework?",
+      "answer": ""
+    },
+    {
+      "question": "Какие потокобезопасные альтернативы есть у HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Какие потокобезопасные коллекции вы знаете/использовали (java.util.concurrent, ConcurrentHashMap, CopyOnWriteArrayList и др.)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие потокобезопасные коллекции знаешь (ConcurrentHashMap, BlockingQueue и т.д.)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие потокобезопасные коллекции знаешь?",
+      "answer": ""
+    },
+    {
+      "question": "Какие потокобезопасные коллекции знаешь? Как достигается безопасность в ConcurrentHashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Какие реализации Set/Map знаешь и когда использовать TreeSet/TreeMap?",
+      "answer": ""
+    },
+    {
+      "question": "Какие требования к ключам TreeMap?",
+      "answer": ""
+    },
+    {
+      "question": "Какие требования к объектам-ключам в Map следует соблюдать?",
+      "answer": ""
+    },
+    {
+      "question": "Какими свойствами должен обладать объект-ключ для использования в HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Какова амортизированная сложность операций в HashMap и что меняется при коллизиях/деревьях?",
+      "answer": ""
+    },
+    {
+      "question": "Какова асимптотика доступа к середине в ArrayList и LinkedList?",
+      "answer": ""
+    },
+    {
+      "question": "Какова сложность добавления в конец/начало для ArrayList и LinkedList?",
+      "answer": ""
+    },
+    {
+      "question": "Какова сложность доступа к первому и последнему элементам LinkedList?",
+      "answer": ""
+    },
+    {
+      "question": "Какова сложность доступа к первому/последнему элементу в LinkedList и почему?",
+      "answer": ""
+    },
+    {
+      "question": "Какова сложность доступа к последнему элементу LinkedList?",
+      "answer": ""
+    },
+    {
+      "question": "Какова сложность операций в HashMap в среднем и при деградации?",
+      "answer": ""
+    },
+    {
+      "question": "Какова средняя и худшая сложность вставки и получения в HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Когда бакет в HashMap превращается в дерево и обратно?",
+      "answer": ""
+    },
+    {
+      "question": "Когда выбирать ArrayList, а когда LinkedList и почему?",
+      "answer": ""
+    },
+    {
+      "question": "Когда выбирать LinkedList вместо ArrayList и наоборот? Примеры сценариев.",
+      "answer": ""
+    },
+    {
+      "question": "Когда уместен CopyOnWriteArrayList и каковы его минусы?",
+      "answer": ""
+    },
+    {
+      "question": "Опиши иерархию коллекций (List/Set/Map и основные реализации).",
+      "answer": ""
+    },
+    {
+      "question": "Потокобезопасные коллекции: ConcurrentHashMap, CopyOnWriteArrayList — когда применять и ограничения.",
+      "answer": ""
+    },
+    {
+      "question": "Почему в HashMap ключами часто делают String?",
+      "answer": ""
+    },
+    {
+      "question": "Почему изменение полей ключа после помещения в HashMap приводит к проблемам?",
+      "answer": ""
+    },
+    {
+      "question": "Почему изменение состояния ключа после помещения в Map опасно?",
+      "answer": ""
+    },
+    {
+      "question": "Почему изменяемые ключи плохи для HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Почему мутабельные ключи в HashMap — это проблема?",
+      "answer": ""
+    },
+    {
+      "question": "Почему не рекомендуется использовать Hashtable?",
+      "answer": ""
+    },
+    {
+      "question": "Почему плохо менять поля ключа в Map/элемент в Set после добавления?",
+      "answer": ""
+    },
+    {
+      "question": "Почему сортировка TreeMap по умолчанию работает по ключам, и как изменить это поведение?",
+      "answer": ""
+    },
+    {
+      "question": "Почему удаление/вставка в начало/середину ArrayList дорогостоящие?",
+      "answer": ""
+    },
+    {
+      "question": "Почему Map не относится к иерархии Collection?",
+      "answer": ""
+    },
+    {
+      "question": "Почему String считается хорошим ключом для HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Разница HashMap, LinkedHashMap, TreeMap.",
+      "answer": ""
+    },
+    {
+      "question": "Разница HashSet и TreeSet.",
+      "answer": ""
+    },
+    {
+      "question": "Сложности операций ArrayList: get, set, add(index), remove(index) — объясните почему.",
+      "answer": ""
+    },
+    {
+      "question": "Чем отличаются HashMap и Hashtable?",
+      "answer": ""
+    },
+    {
+      "question": "Чем ArrayList отличается от LinkedList?",
+      "answer": ""
+    },
+    {
+      "question": "Чем HashSet концептуально отличается от HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Чем HashSet связан с HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Чем LinkedHashMap отличается от HashMap? Что даёт режим access-order?",
+      "answer": ""
+    },
+    {
+      "question": "Чем LinkedHashSet/LinkedHashMap отличаются от HashSet/HashMap (порядок итерации)?",
+      "answer": ""
+    },
+    {
+      "question": "Чем List отличается от Set концептуально?",
+      "answer": ""
+    },
+    {
+      "question": "Чем List, Set и Queue концептуально отличаются?",
+      "answer": ""
+    },
+    {
+      "question": "Чем Map отличается от остальных коллекций в общей иерархии?",
+      "answer": ""
+    },
+    {
+      "question": "Чем TreeSet/TreeMap отличаются от HashSet/HashMap (сортировка, требования к ключам)?",
+      "answer": ""
+    },
+    {
+      "question": "Что будет, если ключ в HashMap изменился после вставки?",
+      "answer": ""
+    },
+    {
+      "question": "Что может произойти, если использовать изменяемый (mutable) объект в качестве ключа HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Что можно рассказать о HashMap, TreeMap, LinkedHashMap и их основе?",
+      "answer": ""
+    },
+    {
+      "question": "Что происходит при расширении HashMap (rehash)? Как меняются бакеты и элементы?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое бакеты (buckets) в HashMap и как там хранятся пары ключ-значение?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое коллизии в HashMap и как они разрешаются?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое коллизия в HashMap и что при этом происходит?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое коллизия в HashMap? Как она обрабатывается (список/дерево)? Какие временные сложности операций?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое CopyOnWriteArrayList, когда его применять и каковы его минусы?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое fail-fast и fail-safe итераторы?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое fail-fast итераторы? Что будет при удалении во время обхода?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое fail-fast поведение коллекций и зачем оно нужно?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое fail-fast при итерации коллекций?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое HashMap и как она устроена на высоком уровне?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое HashSet/LinkedHashSet/TreeSet и когда что использовать?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Map? Какие реализации знаешь и чем отличаются (HashMap, LinkedHashMap, TreeMap)?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое Queue/Deque и какие операции они дают?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое TreeMap/TreeSet и зачем нужны Comparator/Comparable?",
+      "answer": ""
+    },
+    {
+      "question": "Является ли Map коллекцией и почему?",
+      "answer": ""
+    },
+    {
+      "question": "ArrayList vs LinkedList: устройство и когда что выбирать?",
+      "answer": ""
+    },
+    {
+      "question": "ArrayList: как устроен внутри, как происходит динамическое расширение?",
+      "answer": ""
+    },
+    {
+      "question": "EnumSet: когда применять и чем он эффективен?",
+      "answer": ""
+    },
+    {
+      "question": "Hashtable vs HashMap: различия и актуальность в 202x.",
+      "answer": ""
+    },
+    {
+      "question": "LinkedList: структура узла, хранение ссылок, двусвязность.",
+      "answer": ""
+    },
+    {
+      "question": "Map: зачем интерфейс выделен отдельно от Collection?",
+      "answer": ""
+    },
+    {
+      "question": "Как достигается потокобезопасность в ConcurrentHashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Как реализовать потокобезопасный синглтон? Что выбрать: synchronized-метод или блок?",
+      "answer": ""
+    },
+    {
+      "question": "Как устроен ConcurrentHashMap и почему Hashtable считается неудачной?",
+      "answer": ""
+    },
+    {
+      "question": "Когда использовать synchronized, а когда высокоуровневые структуры (ConcurrentHashMap, BlockingQueue)?",
+      "answer": ""
+    },
+    {
+      "question": "Реализуй потокобезопасный счётчик с методами increment() и getValue() (через synchronized).",
+      "answer": ""
+    },
+    {
+      "question": "Чем lock-striping в ConcurrentHashMap лучше глобальной синхронизации?",
+      "answer": ""
+    },
+    {
+      "question": "Где хранятся примитивы и обёртки и почему примитив нельзя использовать ключом в HashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое паттерн «Итератор» (Iterator pattern)?",
+      "answer": ""
+    }
   ]
 }

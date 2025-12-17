@@ -1,50 +1,32 @@
 {
   "Testing": [
-    { "question": "Зачем нужно автоматическое тестирование?", "answer": "" },
-    { "question": "Какие виды тестов существуют (unit, integration, e2e) и в чём их различие?", "answer": "" },
-    { "question": "Чем отличаются unit-тесты от integration-тестов?", "answer": "" },
-    { "question": "Чем отличаются unit-тесты от e2e-тестов?", "answer": "" },
-    { "question": "Где проводить границы между unit и integration тестами?", "answer": "" },
-    { "question": "Какие слои приложения обычно покрывают unit-тестами?", "answer": "" },
-    { "question": "Какие слои приложения покрывают integration-тестами?", "answer": "" },
-    { "question": "Что такое JUnit и какую роль он играет в Java-тестировании?", "answer": "" },
-    { "question": "Чем JUnit 5 отличается от JUnit 4?", "answer": "" },
-    { "question": "Основные аннотации JUnit 5 (@Test, @BeforeEach, @AfterEach, @BeforeAll, @AfterAll)?", "answer": "" },
-    { "question": "Как тестировать исключения в JUnit?", "answer": "" },
-    { "question": "Что такое assertThrows и когда его использовать?", "answer": "" },
-    { "question": "Что такое mocking и stubbing?", "answer": "" },
-    { "question": "Чем mock отличается от stub?", "answer": "" },
-    { "question": "Что такое Mockito и зачем он используется?", "answer": "" },
-    { "question": "Аннотации Mockito: @Mock, @Spy, @InjectMocks — в чём разница?", "answer": "" },
-    { "question": "Когда не стоит использовать моки?", "answer": "" },
-    { "question": "Как тестировать void-методы?", "answer": "" },
-    { "question": "Как проверять побочные эффекты void-методов?", "answer": "" },
-    { "question": "Как проверять, что метод был вызван (verify)?", "answer": "" },
-    { "question": "Что такое Spring Test Context Framework?", "answer": "" },
-    { "question": "Что делает @SpringBootTest и когда его использовать?", "answer": "" },
-    { "question": "Что такое slice-тесты в Spring?", "answer": "" },
-    { "question": "Чем @WebMvcTest отличается от @SpringBootTest?", "answer": "" },
-    { "question": "Чем @DataJpaTest отличается от полноценных integration-тестов?", "answer": "" },
-    { "question": "Как тестировать контроллеры в Spring MVC?", "answer": "" },
-    { "question": "Что такое MockMvc и зачем он нужен?", "answer": "" },
-    { "question": "Как тестировать HTTP-статусы, заголовки и тело ответа?", "answer": "" },
-    { "question": "Как тестировать JSON-ответы (jsonPath)?", "answer": "" },
-    { "question": "Как работают транзакции в тестах Spring?", "answer": "" },
-    { "question": "Почему транзакции в тестах по умолчанию откатываются?", "answer": "" },
-    { "question": "Когда стоит отключать rollback в тестах?", "answer": "" },
-    { "question": "Что такое Testcontainers и зачем он нужен?", "answer": "" },
-    { "question": "Почему Testcontainers предпочтительнее H2/in-memory БД?", "answer": "" },
-    { "question": "Как управляется жизненный цикл контейнеров в тестах?", "answer": "" },
-    { "question": "Когда Testcontainers использовать не стоит?", "answer": "" },
-    { "question": "Как тестировать работу с базой данных?", "answer": "" },
-    { "question": "Как тестировать репозитории Spring Data JPA?", "answer": "" },
-    { "question": "Как тестировать негативные сценарии?", "answer": "" },
-    { "question": "Как тестировать бизнес-ошибки и исключения?", "answer": "" },
-    { "question": "Что такое unit-тест как контракт?", "answer": "" },
-    { "question": "Почему flaky-тесты — проблема?", "answer": "" },
-    { "question": "Как ускорять тесты и снижать время сборки?", "answer": "" },
-    { "question": "Какую роль играет тестовый профиль (application-test.yml)?", "answer": "" },
-    { "question": "Разница между unit, integration и contract тестами?", "answer": "" },
-    { "question": "Когда Testcontainers обязателен, а когда избыточен?", "answer": "" }
+    {
+      "question": "Как протестировать метод void — что именно проверять?",
+      "answer": ""
+    },
+    {
+      "question": "Как протестировать метод, возвращающий void (побочные эффекты, верификация вызовов)?",
+      "answer": ""
+    },
+    {
+      "question": "Какие слои приложения покрываешь тестами и где ставишь границы моков?",
+      "answer": ""
+    },
+    {
+      "question": "Проводите ли нагрузочное тестирование? Кто и как его делает?",
+      "answer": ""
+    },
+    {
+      "question": "Разница unit и integration тестов.",
+      "answer": ""
+    },
+    {
+      "question": "Чем отличаются модульные (unit) тесты от интеграционных?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое mocking/stubbing? Инструменты.",
+      "answer": ""
+    }
   ]
 }
