@@ -1,34 +1,6 @@
 {
   "DevOps / Docker / Kubernetes": [
     {
-      "question": "Зачем в immutable-классе возвращать defensive copy из геттеров?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое Spring Container / ApplicationContext и для чего он нужен?",
-      "answer": ""
-    },
-    {
-      "question": "Как собрать Spring Boot как WAR и когда это нужно?",
-      "answer": ""
-    },
-    {
-      "question": "Основные преимущества Spring Boot (executable JAR vs WAR, BOM, стартеры/автоконфигурация, централизованная конфигурация)?",
-      "answer": ""
-    },
-    {
-      "question": "Зачем Testcontainers и когда пригодится?",
-      "answer": ""
-    },
-    {
-      "question": "Когда и как использовать Testcontainers для интеграционного тестирования?",
-      "answer": ""
-    },
-    {
-      "question": "Чем отличаются unit-тесты от интеграционных и когда использовать Testcontainers?",
-      "answer": ""
-    },
-    {
       "question": "Что такое dependency management и как избежать конфликтов версий?",
       "answer": ""
     },
@@ -38,6 +10,14 @@
     },
     {
       "question": "Плюсы/минусы Gradle vs Maven.",
+      "answer": ""
+    },
+    {
+      "question": "Какая версия Java сегодня самая популярная в проде?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое BOM и как им пользоваться?",
       "answer": ""
     },
     {
@@ -61,11 +41,19 @@
       "answer": ""
     },
     {
+      "question": "Как уменьшить размер образа Java-приложения?",
+      "answer": ""
+    },
+    {
       "question": "Как упаковываете приложение: Docker→Kubernetes? Что из этого настраиваете сами, что — DevOps?",
       "answer": ""
     },
     {
       "question": "Какие типичные проблемы и на что обращать внимание при сборке Docker-образа?",
+      "answer": ""
+    },
+    {
+      "question": "Почему БД и приложение не кладут в один контейнер?",
       "answer": ""
     },
     {
@@ -102,10 +90,6 @@
     },
     {
       "question": "Насколько глубоко знаком с Kubernetes ресурсами?",
-      "answer": ""
-    },
-    {
-      "question": "Где и как деплоитесь: облако/свои ДЦ, виртуалки, Kubernetes?",
       "answer": ""
     }
   ]

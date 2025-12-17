@@ -1,14 +1,6 @@
 {
   "JDBC / JPA / Hibernate": [
     {
-      "question": "Как бы ты реализовал унификацию и преобразование checked-исключений JDBC в unchecked (без «магии»)?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое оптимистическая (@Version) и пессимистическая блокировки?",
-      "answer": ""
-    },
-    {
       "question": "Чем JPA/Hibernate отличается от «чистого» JDBC и когда предпочесть JDBC Template?",
       "answer": ""
     },
@@ -37,7 +29,11 @@
       "answer": ""
     },
     {
-      "question": "Чем работаете с БД (Spring Data JPA/JdbcTemplate)? Как пишете запросы (@Query, метод-нейминг)?",
+      "question": "Что такое persistence context и кэш первого уровня?",
+      "answer": ""
+    },
+    {
+      "question": "Блокировки: оптимистическая vs пессимистическая — когда какую использовать? Как реализовать в JPA (версионирование, SELECT FOR UPDATE)?",
       "answer": ""
     },
     {
@@ -53,7 +49,39 @@
       "answer": ""
     },
     {
+      "question": "Два метода с @Transactional в одном бине: что произойдёт при внутреннем вызове? Как это обойти?",
+      "answer": ""
+    },
+    {
+      "question": "Если в транзакции загрузили сущность, поменяли поля — нужно ли явно вызывать save()? Почему?",
+      "answer": ""
+    },
+    {
+      "question": "Как должна работать @Transactional в показанном месте? Будет ли она реально активна? Почему?",
+      "answer": ""
+    },
+    {
+      "question": "Как избежать дедлоков при блокировках сущностей (например, при переводе денег между пользователями)?",
+      "answer": ""
+    },
+    {
+      "question": "Как поведёт себя транзакция, если @Transactional метод вызывается из @PostConstruct?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает @Transactional под капотом (прокси, правила rollback, readOnly, изоляция)?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает @Transactional: прокси, rollback-правила, уровень изоляции, readOnly?",
+      "answer": ""
+    },
+    {
       "question": "Как работает fetch LAZY/EAGER? Проблема N+1 и решения.",
+      "answer": ""
+    },
+    {
+      "question": "Как рефакторить код со @Transactional, чтобы избежать долгих внешних вызовов внутри транзакции?",
       "answer": ""
     },
     {
@@ -69,15 +97,23 @@
       "answer": ""
     },
     {
+      "question": "Какие уровни кэширования есть в Hibernate?",
+      "answer": ""
+    },
+    {
       "question": "Какой синтаксис можно использовать в @Query (HQL/JPQL или native SQL)?",
       "answer": ""
     },
     {
-      "question": "Отличие save vs saveAndFlush.",
+      "question": "Кэш JPA: кэш первого и второго уровня — что это? Как работает @Cacheable в Spring?",
       "answer": ""
     },
     {
-      "question": "Что такое SQL-инъекции, какой код к ним приводит и как защищаться в JDBC?",
+      "question": "Нужен ли save() после изменения управляемой сущности в транзакции? Почему?",
+      "answer": ""
+    },
+    {
+      "question": "Отличие save vs saveAndFlush.",
       "answer": ""
     }
   ]

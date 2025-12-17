@@ -1,38 +1,6 @@
 {
   "Исключения": [
     {
-      "question": "Разница final, finally, finalize (и почему finalize не использовать).",
-      "answer": ""
-    },
-    {
-      "question": "Чем отличаются final, finally и finalize?",
-      "answer": ""
-    },
-    {
-      "question": "Что делает блок finally? Всегда ли нужен для закрытия ресурсов?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое suppressed exceptions?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое try-with-resources и какие объекты можно туда помещать?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое try-with-resources? Какие объекты можно туда класть?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое try-with-resources? Какие объекты можно туда поместить (требование AutoCloseable)?",
-      "answer": ""
-    },
-    {
-      "question": "Try-with-resources: как работает и какие требования к ресурсам?",
-      "answer": ""
-    },
-    {
       "question": "В чём отличие checked и unchecked исключений?",
       "answer": ""
     },
@@ -49,11 +17,19 @@
       "answer": ""
     },
     {
+      "question": "Зачем вообще закрывать ресурсы?",
+      "answer": ""
+    },
+    {
       "question": "Иерархия исключений: ключевые базовые классы и практики обработки.",
       "answer": ""
     },
     {
       "question": "Исключения: checked vs unchecked — различия и когда что использовать?",
+      "answer": ""
+    },
+    {
+      "question": "Как бы ты реализовал унификацию и преобразование checked-исключений JDBC в unchecked (без «магии»)?",
       "answer": ""
     },
     {
@@ -98,30 +74,6 @@
     },
     {
       "question": "Checked vs Runtime exceptions: когда и какие использовать? Плюсы и минусы подходов.",
-      "answer": ""
-    },
-    {
-      "question": "Как в CompletableFuture обрабатываются исключения? Как работает exceptionally?",
-      "answer": ""
-    },
-    {
-      "question": "Чем отличаются подходы с tryLock/тайм-аутом и с упорядочиванием захвата блокировок?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое livelock и как его избегать (fair locks, tryLock с таймаутом и др.)?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое монитор/synchronized и как работает взаимное исключение?",
-      "answer": ""
-    },
-    {
-      "question": "Из-за чего возникает OutOfMemoryError и с чего начать разбор на предпроде?",
-      "answer": ""
-    },
-    {
-      "question": "Почему SQL-исключения в Spring видны как непроверяемые? Чем обёртываются SQLException (идея DataAccessException)?",
       "answer": ""
     }
   ]

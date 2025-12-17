@@ -1,39 +1,11 @@
 {
   "Spring / Spring Boot": [
     {
-      "question": "Можно ли переопределить статический метод? Чем override отличается от hiding?",
+      "question": "Какие проблемы у @Scheduled в микросервисах при нескольких инстансах? Как синхронизировать запуск (напр. ShedLock)?",
       "answer": ""
     },
     {
-      "question": "Как работает Collections.unmodifiableList(...)?",
-      "answer": ""
-    },
-    {
-      "question": "Как удалить элементы из коллекции во время обхода, не ловя ConcurrentModificationException?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое fail-fast в коллекциях и когда возникает ConcurrentModificationException?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое fail-fast и как модифицировать коллекцию при итерации, избегая ConcurrentModificationException?",
-      "answer": ""
-    },
-    {
-      "question": "Типичные проблемы многопоточности: что такое race condition, deadlock, livelock, starvation?",
-      "answer": ""
-    },
-    {
-      "question": "Какие феномены возникают: dirty read, non-repeatable read, phantom read, lost update?",
-      "answer": ""
-    },
-    {
-      "question": "Уровни изоляции транзакций и феномены (dirty/non-repeatable/phantom).",
-      "answer": ""
-    },
-    {
-      "question": "Что такое dirty read, non-repeatable read, phantom read, lost update?",
+      "question": "Может ли один сервис работать с двумя БД одновременно и что для этого нужно в Spring?",
       "answer": ""
     },
     {
@@ -45,6 +17,22 @@
       "answer": ""
     },
     {
+      "question": "Почему транзакции в Spring работают через прокси? Ограничения подхода?",
+      "answer": ""
+    },
+    {
+      "question": "Почему SQL-исключения в Spring видны как непроверяемые? Чем обёртываются SQLException (идея DataAccessException)?",
+      "answer": ""
+    },
+    {
+      "question": "Распространится ли транзакция на внутренний вызов метода в том же классе и почему?",
+      "answer": ""
+    },
+    {
+      "question": "Распространится ли транзакция на внутренний вызов метода того же класса? Почему (self-invocation, прокси)?",
+      "answer": ""
+    },
+    {
       "question": "Скоупы бинов: singleton, prototype, web-скоупы — отличия?",
       "answer": ""
     },
@@ -53,7 +41,15 @@
       "answer": ""
     },
     {
+      "question": "Способы внедрения зависимостей: поле, конструктор, сеттер — плюсы/минусы?",
+      "answer": ""
+    },
+    {
       "question": "Чем отличается Java-конфигурация (@Configuration + @Bean) от XML-конфигурации?",
+      "answer": ""
+    },
+    {
+      "question": "Чем REQUIRED отличается от REQUIRES_NEW, NESTED, NEVER, MANDATORY?",
       "answer": ""
     },
     {
@@ -77,6 +73,10 @@
       "answer": ""
     },
     {
+      "question": "Что делает propagation и когда использовать REQUIRED, REQUIRES_NEW, NEVER?",
+      "answer": ""
+    },
+    {
       "question": "Что делают BeanPostProcessor и BeanFactoryPostProcessor, и когда срабатывает @PostConstruct?",
       "answer": ""
     },
@@ -93,6 +93,10 @@
       "answer": ""
     },
     {
+      "question": "Что такое Inversion of Control и чем оно отличается от Dependency Injection?",
+      "answer": ""
+    },
+    {
       "question": "Что такое IoC и DI? Как реализовано в Spring?",
       "answer": ""
     },
@@ -105,7 +109,19 @@
       "answer": ""
     },
     {
+      "question": "Что такое Spring Container / ApplicationContext и для чего он нужен?",
+      "answer": ""
+    },
+    {
       "question": "Что такое Spring-бин?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница @Component, @Service, @Repository, @Controller?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница между singleton и prototype в Spring на практике?",
       "answer": ""
     },
     {
@@ -114,6 +130,10 @@
     },
     {
       "question": "Для чего @PostConstruct и @PreDestroy? Когда уничтожается singleton-бин?",
+      "answer": ""
+    },
+    {
+      "question": "Для чего нужны аннотации @Component, @Service, @Repository, @Controller?",
       "answer": ""
     },
     {
@@ -126,6 +146,10 @@
     },
     {
       "question": "Зачем нужна @Primary и как работает?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужно AOP в Spring? Примеры сквозной логики.",
       "answer": ""
     },
     {
@@ -145,11 +169,23 @@
       "answer": ""
     },
     {
+      "question": "Как запланировать задачу (@Scheduled) и заставить её исполняться только на одном инстансе в кластере?",
+      "answer": ""
+    },
+    {
       "question": "Как передать один бин в другой и когда предпочесть конструкторную инъекцию?",
       "answer": ""
     },
     {
+      "question": "Как сделать асинхронный метод в Spring? Что по умолчанию с пулом потоков у @Async?",
+      "answer": ""
+    },
+    {
       "question": "Как управлять порядком инициализации и зависимостями между бинами?",
+      "answer": ""
+    },
+    {
+      "question": "Как Spring в целом включает транзакционную логику (механизм прокси)?",
       "answer": ""
     },
     {
@@ -169,7 +205,19 @@
       "answer": ""
     },
     {
+      "question": "Какие две библиотеки проксирования использует Spring (JDK Dynamic Proxies и CGLIB) и чем они отличаются?",
+      "answer": ""
+    },
+    {
+      "question": "Какие есть способы внедрения зависимостей (через конструктор, поле, сеттер)?",
+      "answer": ""
+    },
+    {
       "question": "Какие области видимости (scopes) бинов в Spring ты знаешь и каков их жизненный цикл?",
+      "answer": ""
+    },
+    {
+      "question": "Какие подводные камни проксификации в Spring (самовызов, final-классы/методы)?",
       "answer": ""
     },
     {
@@ -189,7 +237,19 @@
       "answer": ""
     },
     {
+      "question": "Какими аннотациями создаются бины (@Component, @Service, @Repository, @Controller, @Bean)?",
+      "answer": ""
+    },
+    {
       "question": "Какими способами создать бин в Spring и когда выбирать каждый?",
+      "answer": ""
+    },
+    {
+      "question": "Каков порядок/приоритет внедрения: конструктор, сеттер, поле?",
+      "answer": ""
+    },
+    {
+      "question": "Какова роль разработчика при Dependency Injection?",
       "answer": ""
     },
     {
@@ -205,31 +265,15 @@
       "answer": ""
     },
     {
+      "question": "Какой Propagation по умолчанию? Какие ещё варианты propagation и когда их применять?",
+      "answer": ""
+    },
+    {
       "question": "Нужно ли вешать @Transactional на сервисный метод, если внутри JpaRepository.save()? Как транзакции работают по умолчанию в Spring Data?",
       "answer": ""
     },
     {
-      "question": "Два метода с @Transactional в одном бине: что произойдёт при внутреннем вызове? Как это обойти?",
-      "answer": ""
-    },
-    {
-      "question": "Как должна работать @Transactional в показанном месте? Будет ли она реально активна? Почему?",
-      "answer": ""
-    },
-    {
-      "question": "Как поведёт себя транзакция, если @Transactional метод вызывается из @PostConstruct?",
-      "answer": ""
-    },
-    {
-      "question": "Как работает @Transactional под капотом (прокси, правила rollback, readOnly, изоляция)?",
-      "answer": ""
-    },
-    {
-      "question": "Как работает @Transactional: прокси, rollback-правила, уровень изоляции, readOnly?",
-      "answer": ""
-    },
-    {
-      "question": "Как рефакторить код со @Transactional, чтобы избежать долгих внешних вызовов внутри транзакции?",
+      "question": "Чем работаете с БД (Spring Data JPA/JdbcTemplate)? Как пишете запросы (@Query, метод-нейминг)?",
       "answer": ""
     },
     {
@@ -269,6 +313,14 @@
       "answer": ""
     },
     {
+      "question": "Как работают сервлеты при деплое как JAR без внешнего Tomcat?",
+      "answer": ""
+    },
+    {
+      "question": "Как собрать Spring Boot как WAR и когда это нужно?",
+      "answer": ""
+    },
+    {
       "question": "Как Spring Boot определяет, где сканировать бины без явного @ComponentScan?",
       "answer": ""
     },
@@ -282,6 +334,10 @@
     },
     {
       "question": "Какие Spring Boot-стартеры кладёшь в типичный бэкенд и зачем каждый?",
+      "answer": ""
+    },
+    {
+      "question": "Основные преимущества Spring Boot (executable JAR vs WAR, BOM, стартеры/автоконфигурация, централизованная конфигурация)?",
       "answer": ""
     },
     {
@@ -309,7 +365,7 @@
       "answer": ""
     },
     {
-      "question": "Как встроить систему разных скидок (много правил, возможно комбинируемых) в текущий алгоритм?",
+      "question": "Приходилось ли работать с аспектами (AOP)? Как реализовать аспект для логирования времени выполнения метода?",
       "answer": ""
     }
   ]

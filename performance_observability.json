@@ -1,66 +1,6 @@
 {
   "Производительность / Observability": [
     {
-      "question": "Что такое автобоксинг/анбоксинг? Можно ли сравнивать Integer через ==? Как работает кэш значений?",
-      "answer": ""
-    },
-    {
-      "question": "В чём отличие Executors.newFixedThreadPool и Executors.newCachedThreadPool?",
-      "answer": ""
-    },
-    {
-      "question": "Зачем нужен ExecutorService и когда выбирать newFixedThreadPool vs newCachedThreadPool vs newSingleThreadExecutor?",
-      "answer": ""
-    },
-    {
-      "question": "Зачем разработчику знать про classloader’ы?",
-      "answer": ""
-    },
-    {
-      "question": "Как работает загрузка классов в Java: этапы, виды classloader’ов и принцип делегирования?",
-      "answer": ""
-    },
-    {
-      "question": "Какие области памяти есть в JVM (heap, metaspace, code cache, стек потоков) и за что каждая отвечает?",
-      "answer": ""
-    },
-    {
-      "question": "Как диагностировать медленные запросы (execution plan)?",
-      "answer": ""
-    },
-    {
-      "question": "Как подступиться к медленному запросу в Postgres? Что смотреть сначала?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое persistence context и кэш первого уровня?",
-      "answer": ""
-    },
-    {
-      "question": "Зачем нужно AOP в Spring? Примеры сквозной логики.",
-      "answer": ""
-    },
-    {
-      "question": "Как Spring в целом включает транзакционную логику (механизм прокси)?",
-      "answer": ""
-    },
-    {
-      "question": "Какие уровни кэширования есть в Hibernate?",
-      "answer": ""
-    },
-    {
-      "question": "Кэш JPA: кэш первого и второго уровня — что это? Как работает @Cacheable в Spring?",
-      "answer": ""
-    },
-    {
-      "question": "Приходилось ли работать с аспектами (AOP)? Как реализовать аспект для логирования времени выполнения метода?",
-      "answer": ""
-    },
-    {
-      "question": "Стратегии тестирования в Spring (slice-тесты, @SpringBootTest).",
-      "answer": ""
-    },
-    {
       "question": "Что такое мониторинг и observability в микросервисах? Какие метрики/инструменты использовать (например, Spring Boot Actuator, Prometheus/Grafana, CloudWatch)?",
       "answer": ""
     },
@@ -70,6 +10,14 @@
     },
     {
       "question": "Внешний сервис стал медленным: как это выявить и чем защититься (timeouts, retries, fallback, circuit breaker)?",
+      "answer": ""
+    },
+    {
+      "question": "Как выстроить наблюдаемость так, чтобы команда узнавала о проблемах раньше менеджера/пользователей?",
+      "answer": ""
+    },
+    {
+      "question": "Как действовать при релизе: что мониторить после выката?",
       "answer": ""
     },
     {
@@ -114,34 +62,6 @@
     },
     {
       "question": "Какую структуру данных выбрать для кэша в многопоточной среде? Как сделать распределённый кэш?",
-      "answer": ""
-    },
-    {
-      "question": "Как мониторите/тюните производительность обработки (RPS, задержки) при росте числа партиций?",
-      "answer": ""
-    },
-    {
-      "question": "Где хранится контекст трассировки внутри JVM в MVC-приложении?",
-      "answer": ""
-    },
-    {
-      "question": "Из чего строить feed DB (например, Redis Sorted Set: postId + createdAt/score)?",
-      "answer": ""
-    },
-    {
-      "question": "Как передаётся traceId между сервисами?",
-      "answer": ""
-    },
-    {
-      "question": "Как реализовать трассировку запросов между микросервисами (trace id/correlation id)?",
-      "answer": ""
-    },
-    {
-      "question": "Какие SLA по генерации/отдаче ленты и как их мониторить?",
-      "answer": ""
-    },
-    {
-      "question": "Нефункциональные требования: порядок трафика (DAU/пиковый RPS), SLO/latency, доступность?",
       "answer": ""
     }
   ]

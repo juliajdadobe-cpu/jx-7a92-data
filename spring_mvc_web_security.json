@@ -1,26 +1,6 @@
 {
   "Spring MVC / Web / Security": [
     {
-      "question": "Как настроить пулы потоков для WebClient/Netty?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое CORS, для чего он нужен и как настраивается в Spring Security?",
-      "answer": ""
-    },
-    {
-      "question": "В чём разница @Component, @Service, @Repository, @Controller?",
-      "answer": ""
-    },
-    {
-      "question": "Для чего нужны аннотации @Component, @Service, @Repository, @Controller?",
-      "answer": ""
-    },
-    {
-      "question": "Какими аннотациями создаются бины (@Component, @Service, @Repository, @Controller, @Bean)?",
-      "answer": ""
-    },
-    {
       "question": "Как Spring маршрутизирует HTTP-запрос на нужный контроллер? Что такое DispatcherServlet?",
       "answer": ""
     },
@@ -53,7 +33,19 @@
       "answer": ""
     },
     {
+      "question": "Что такое back-pressure?",
+      "answer": ""
+    },
+    {
       "question": "Что такое Servlet: интерфейс или класс?",
+      "answer": ""
+    },
+    {
+      "question": "Как реализуем аутентификацию/авторизацию (JWT?) и где её Terminate’им?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое SQL-инъекции, какой код к ним приводит и как защищаться в JDBC?",
       "answer": ""
     }
   ]

@@ -1,55 +1,15 @@
 {
   "Коллекции": [
     {
-      "question": "Какой ключевой default-метод появился в Java 8 (в Collection)?",
-      "answer": ""
-    },
-    {
-      "question": "Можно ли вызвать приватный метод/изменить приватное поле? Что нужно сделать (например, setAccessible)?",
-      "answer": ""
-    },
-    {
-      "question": "Можно ли свой класс использовать в for-each? Что нужно реализовать (Iterable/Iterator)?",
-      "answer": ""
-    },
-    {
-      "question": "Работает ли for-each без итератора? Как связаны Iterable и Iterator?",
-      "answer": ""
-    },
-    {
-      "question": "Разница между интерфейсами Iterable и Iterator?",
-      "answer": ""
-    },
-    {
-      "question": "Реализуйте мини-Optional: дженерик-класс с value, методами map и filter (как в java.util.Optional).",
-      "answer": ""
-    },
-    {
-      "question": "Чем String отличается от StringBuilder и StringBuffer по назначению и потокобезопасности?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое цикл enhanced for (for-each) и чем он обязан интерфейсу Iterable?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое Iterator и какие преимущества он даёт?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое Iterator и Iterable?",
-      "answer": ""
-    },
-    {
-      "question": "Для чего нужен hashCode() и как его используют хеш-коллекции (HashMap, HashSet)?",
-      "answer": ""
-    },
-    {
       "question": "Амортизированная сложность добавления в конец ArrayList и когда она нарушается?",
       "answer": ""
     },
     {
       "question": "В чём преимущество удаления в LinkedList по сравнению с ArrayList?",
+      "answer": ""
+    },
+    {
+      "question": "В чём различие между ArrayList и LinkedList (структура и доступ по индексу)?",
       "answer": ""
     },
     {
@@ -62,6 +22,10 @@
     },
     {
       "question": "В чём разница ArrayList и LinkedList? Сложности операций доступа/вставки/удаления?",
+      "answer": ""
+    },
+    {
+      "question": "Допускают ли они null-ключ/значение?",
       "answer": ""
     },
     {
@@ -85,6 +49,14 @@
       "answer": ""
     },
     {
+      "question": "Как проверить, что сортировка по значениям действительно стабильна и корректна для одинаковых значений?",
+      "answer": ""
+    },
+    {
+      "question": "Как работает Collections.unmodifiableList(...)?",
+      "answer": ""
+    },
+    {
       "question": "Как работает HashMap.put(K,V) пошагово?",
       "answer": ""
     },
@@ -101,7 +73,19 @@
       "answer": ""
     },
     {
+      "question": "Как сделать ключ иммутабельным (требования к классу-ключу)?",
+      "answer": ""
+    },
+    {
       "question": "Как сделать коллекцию потокобезопасной? Какие способы есть (concurrent-коллекции, Collections.synchronized*) ?",
+      "answer": ""
+    },
+    {
+      "question": "Как удалить элементы из коллекции во время обхода, не ловя ConcurrentModificationException?",
+      "answer": ""
+    },
+    {
+      "question": "Как устроена HashMap внутри: бакеты, хеш, индекс, коллизии, порог дерева?",
       "answer": ""
     },
     {
@@ -118,6 +102,10 @@
     },
     {
       "question": "Как LinkedList обеспечивает быстрый доступ к первому/последнему элементу?",
+      "answer": ""
+    },
+    {
+      "question": "Какие коллекции знаете? Какова иерархия интерфейсов коллекций?",
       "answer": ""
     },
     {
@@ -161,6 +149,10 @@
       "answer": ""
     },
     {
+      "question": "Какова амортизированная сложность добавления элемента в Map? Каков худший случай?",
+      "answer": ""
+    },
+    {
       "question": "Какова амортизированная сложность операций в HashMap и что меняется при коллизиях/деревьях?",
       "answer": ""
     },
@@ -189,6 +181,10 @@
       "answer": ""
     },
     {
+      "question": "Какова сложность поиска в LinkedList по индексу? Всегда ли она линейная?",
+      "answer": ""
+    },
+    {
       "question": "Какова средняя и худшая сложность вставки и получения в HashMap?",
       "answer": ""
     },
@@ -206,6 +202,18 @@
     },
     {
       "question": "Когда уместен CopyOnWriteArrayList и каковы его минусы?",
+      "answer": ""
+    },
+    {
+      "question": "Корректно ли использовать массив (int[]) как ключ мапы?",
+      "answer": ""
+    },
+    {
+      "question": "Может ли два разных hashCode попасть в один бакет?",
+      "answer": ""
+    },
+    {
+      "question": "Можно ли использовать null как ключ? Где нельзя?",
       "answer": ""
     },
     {
@@ -273,7 +281,15 @@
       "answer": ""
     },
     {
+      "question": "Сложности операций LinkedList: addLast, add(index), remove(index), get(index) — поясните.",
+      "answer": ""
+    },
+    {
       "question": "Чем отличаются HashMap и Hashtable?",
+      "answer": ""
+    },
+    {
+      "question": "Чем различаются ArrayList и LinkedList по вставке/удалению, индексации и памяти?",
       "answer": ""
     },
     {
@@ -349,6 +365,14 @@
       "answer": ""
     },
     {
+      "question": "Что такое fail-fast в коллекциях и когда возникает ConcurrentModificationException?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое fail-fast и как модифицировать коллекцию при итерации, избегая ConcurrentModificationException?",
+      "answer": ""
+    },
+    {
       "question": "Что такое fail-fast и fail-safe итераторы?",
       "answer": ""
     },
@@ -410,38 +434,6 @@
     },
     {
       "question": "Map: зачем интерфейс выделен отдельно от Collection?",
-      "answer": ""
-    },
-    {
-      "question": "Как достигается потокобезопасность в ConcurrentHashMap?",
-      "answer": ""
-    },
-    {
-      "question": "Как реализовать потокобезопасный синглтон? Что выбрать: synchronized-метод или блок?",
-      "answer": ""
-    },
-    {
-      "question": "Как устроен ConcurrentHashMap и почему Hashtable считается неудачной?",
-      "answer": ""
-    },
-    {
-      "question": "Когда использовать synchronized, а когда высокоуровневые структуры (ConcurrentHashMap, BlockingQueue)?",
-      "answer": ""
-    },
-    {
-      "question": "Реализуй потокобезопасный счётчик с методами increment() и getValue() (через synchronized).",
-      "answer": ""
-    },
-    {
-      "question": "Чем lock-striping в ConcurrentHashMap лучше глобальной синхронизации?",
-      "answer": ""
-    },
-    {
-      "question": "Где хранятся примитивы и обёртки и почему примитив нельзя использовать ключом в HashMap?",
-      "answer": ""
-    },
-    {
-      "question": "Что такое паттерн «Итератор» (Iterator pattern)?",
       "answer": ""
     }
   ]

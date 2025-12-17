@@ -1,11 +1,27 @@
 {
   "Многопоточность": [
     {
+      "question": "Асинхронность vs многопоточность: в чём разница?",
+      "answer": ""
+    },
+    {
+      "question": "В чём отличие Executors.newFixedThreadPool и Executors.newCachedThreadPool?",
+      "answer": ""
+    },
+    {
       "question": "В чём проблема подхода с synchronized и какие есть современные альтернативы?",
       "answer": ""
     },
     {
       "question": "В чём проблема synchronized и зачем пакет java.util.concurrent?",
+      "answer": ""
+    },
+    {
+      "question": "В чём разница eager vs lazy singleton и когда какой выбирать?",
+      "answer": ""
+    },
+    {
+      "question": "Где ForkJoinPool уместен, а где использовать не стоит?",
       "answer": ""
     },
     {
@@ -29,7 +45,15 @@
       "answer": ""
     },
     {
+      "question": "Если только читаем/пишем переменную без инкремента — что использовать для гарантий видимости?",
+      "answer": ""
+    },
+    {
       "question": "Зачем знать про synchronized, если современные сервисы почти ничего не хранят в памяти?",
+      "answer": ""
+    },
+    {
+      "question": "Зачем нужен ExecutorService и когда выбирать newFixedThreadPool vs newCachedThreadPool vs newSingleThreadExecutor?",
       "answer": ""
     },
     {
@@ -49,7 +73,23 @@
       "answer": ""
     },
     {
+      "question": "Как в CompletableFuture обрабатываются исключения? Как работает exceptionally?",
+      "answer": ""
+    },
+    {
       "question": "Как выбираете размер пула потоков (executor)? На что ориентируетесь?",
+      "answer": ""
+    },
+    {
+      "question": "Как дождаться завершения других потоков (Thread.join, CountDownLatch, CyclicBarrier)?",
+      "answer": ""
+    },
+    {
+      "question": "Как достигается потокобезопасность в ConcurrentHashMap?",
+      "answer": ""
+    },
+    {
+      "question": "Как запустить отправку уведомления асинхронно? Каким образом и в каком пуле потоков?",
       "answer": ""
     },
     {
@@ -85,6 +125,14 @@
       "answer": ""
     },
     {
+      "question": "Как реализовать потокобезопасный синглтон? Что выбрать: synchronized-метод или блок?",
+      "answer": ""
+    },
+    {
+      "question": "Как устроен ConcurrentHashMap и почему Hashtable считается неудачной?",
+      "answer": ""
+    },
+    {
       "question": "Какие атомарные классы в Java ты знаешь? Как они обеспечивают атомарность без блокировок (CAS)?",
       "answer": ""
     },
@@ -105,7 +153,23 @@
       "answer": ""
     },
     {
+      "question": "Какие способы создания/управления потоками поддерживаются в Java?",
+      "answer": ""
+    },
+    {
+      "question": "Какие типичные проблемы многопоточности (гонки данных, видимость, взаимные блокировки) встречаются?",
+      "answer": ""
+    },
+    {
+      "question": "Какие типы пулов потоков знаешь? Чем ForkJoinPool отличается (work-stealing)?",
+      "answer": ""
+    },
+    {
       "question": "Какие типы тредпулов умеет Executors?",
+      "answer": ""
+    },
+    {
+      "question": "Когда использовать synchronized, а когда высокоуровневые структуры (ConcurrentHashMap, BlockingQueue)?",
       "answer": ""
     },
     {
@@ -125,7 +189,35 @@
       "answer": ""
     },
     {
+      "question": "Почему контроллер с инкрементом обычного int не потокобезопасен? Как исправить?",
+      "answer": ""
+    },
+    {
       "question": "Почему volatile недостаточно вместо атомарных типов?",
+      "answer": ""
+    },
+    {
+      "question": "Типичные проблемы многопоточности: что такое race condition, deadlock, livelock, starvation?",
+      "answer": ""
+    },
+    {
+      "question": "Чем отличаются подходы с tryLock/тайм-аутом и с упорядочиванием захвата блокировок?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое атомарность в многопоточности на практическом примере?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое атомарность и консистентность в контексте многопоточности?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое атомарность и консистентность в многопоточности?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое дедлок, как его диагностировать и как от него избавиться?",
       "answer": ""
     },
     {
@@ -141,7 +233,23 @@
       "answer": ""
     },
     {
+      "question": "Что такое livelock и как его избегать (fair locks, tryLock с таймаутом и др.)?",
+      "answer": ""
+    },
+    {
+      "question": "Примеры задач, где параллельное выполнение даёт проигрыш относительно последовательного. Почему?",
+      "answer": ""
+    },
+    {
+      "question": "Объясните ForkJoinPool и стратегию work-stealing.",
+      "answer": ""
+    },
+    {
       "question": "Пользовался ли атомиками? Зачем они, как работает CAS?",
+      "answer": ""
+    },
+    {
+      "question": "Реализуй потокобезопасный счётчик с методами increment() и getValue() (через synchronized).",
       "answer": ""
     },
     {
@@ -154,6 +262,10 @@
     },
     {
       "question": "Чем ExecutorService лучше ручного управления потоками?",
+      "answer": ""
+    },
+    {
+      "question": "Чем lock-striping в ConcurrentHashMap лучше глобальной синхронизации?",
       "answer": ""
     },
     {
@@ -193,11 +305,31 @@
       "answer": ""
     },
     {
+      "question": "Что произойдёт, если внешние вызовы «зависают», а вы используете общий ForkJoin common pool?",
+      "answer": ""
+    },
+    {
       "question": "Что такое виртуальные потоки в Java и чем они соотносятся с реактивным программированием?",
       "answer": ""
     },
     {
+      "question": "Что такое монитор в Java? Можем ли мы им управлять напрямую?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое монитор объекта?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое монитор/synchronized и как работает взаимное исключение?",
+      "answer": ""
+    },
+    {
       "question": "Что такое Callable, Future, CompletableFuture?",
+      "answer": ""
+    },
+    {
+      "question": "Что такое fork/join и work-stealing?",
       "answer": ""
     },
     {
@@ -222,6 +354,10 @@
     },
     {
       "question": "Что делает планировщик потоков (thread scheduler) и имеет ли смысл менять приоритет потока (setPriority)?",
+      "answer": ""
+    },
+    {
+      "question": "Чем многопоточность в Java отличается от подхода с корутинами в Kotlin?",
       "answer": ""
     }
   ]
