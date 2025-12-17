@@ -2,27 +2,27 @@
   "Java IO / NIO": [
     {
       "question": "Можно ли создать File для несуществующего пути?",
-      "answer": ""
+      "answer": "Да. `java.io.File` — это *объект-обёртка над путём*, а не «открытый файл».\n\nСоздать `new File(\"/no/such/path\")` можно всегда. Ошибка появится только при попытке реального обращения к файловой системе: например, при `createNewFile()`, `mkdirs()`, чтении/записи через стримы.\n\nПроверить существование можно через `exists()`, а тип — через `isFile()`/`isDirectory()`."
     },
     {
       "question": "Назови классы для работы с байтовыми потоками ввода/вывода (Input/OutputStream-семейство).",
-      "answer": ""
+      "answer": "Базовые: `InputStream` и `OutputStream`.\n\nЧастые реализации/обёртки:\n- файлы: `FileInputStream`, `FileOutputStream`\n- буферизация: `BufferedInputStream`, `BufferedOutputStream`\n- примитивы: `DataInputStream`, `DataOutputStream`\n- байтовые массивы: `ByteArrayInputStream`, `ByteArrayOutputStream`\n- декораторы: `FilterInputStream`/`FilterOutputStream` (например, `DigestInputStream`)\n- zip: `ZipInputStream`, `ZipOutputStream`\n\nДля текста обычно используют `Reader/Writer` (это уже не байтовые, а символьные потоки)."
     },
     {
       "question": "Чем отличаются байтовые и файловые потоки ввода/вывода?",
-      "answer": ""
+      "answer": "Байтовые потоки (`InputStream`/`OutputStream`) работают с *байтами* и подходят для любых данных: картинки, pdf, бинарные форматы, а также текст (если вы сами контролируете кодировку).\n\n«Файловые» потоки — это частный случай байтовых/символьных потоков, которые читают/пишут именно из/в файл: например, `FileInputStream`/`FileOutputStream`, `FileReader`/`FileWriter`.\n\nДля текста предпочтительнее: байтовый поток + явная кодировка через `InputStreamReader`/`OutputStreamWriter` или `Files.newBufferedReader/newBufferedWriter`."
     },
     {
       "question": "Чем читать/писать данные из/в файл в Java?",
-      "answer": ""
+      "answer": "Зависит от задачи:\n- Бинарные данные: `FileInputStream`/`FileOutputStream` + `Buffered*`.\n- Текст: `Files.newBufferedReader(path, charset)` / `Files.newBufferedWriter(...)` или `BufferedReader`/`BufferedWriter` через `InputStreamReader`.\n- «Целиком файл»: `Files.readAllBytes`, `Files.readString` (для небольших файлов).\n- NIO: `FileChannel` + `ByteBuffer` (для больших файлов/высокой производительности), `Files.copy`, `Files.lines`.\n\nИ почти всегда стоит использовать `try-with-resources`, чтобы гарантированно закрывать ресурсы."
     },
     {
       "question": "Что представляет собой класс File? Что произойдёт, если путь указывает на несуществующий файл?",
-      "answer": ""
+      "answer": "`File` представляет путь в файловой системе (файл или директорию), но сам по себе ничего не открывает и не создаёт.\n\nЕсли путь указывает на несуществующий файл, `new File(path)` всё равно создаст объект. Методы вроде `exists()` вернут `false`. Попытка чтения/открытия через потоки приведёт к ошибке (например, `FileNotFoundException`). Создать файл можно через `createNewFile()` или записью через `FileOutputStream` (если директории существуют и есть права)."
     },
     {
       "question": "Что представляет собой класс File? Является ли объект File реальным файлом на диске?",
-      "answer": ""
+      "answer": "Нет. `java.io.File` — это описание пути (path), а не «реальный файл».\n\nФакт существования файла/директории и доступность зависят от файловой системы и проверяются отдельно (`exists()`, `canRead()`, `isFile()` и т.д.).\n\nДля современной работы с путями и операциями чаще используют NIO: `Path`/`Files`."
     }
   ]
 }
