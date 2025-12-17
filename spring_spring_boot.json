@@ -30,6 +30,26 @@
     { "question": "Как работает прокси в Spring (JDK vs CGLIB)?", "answer": "" },
     { "question": "Что такое @Transactional и зачем она нужна?", "answer": "" },
     { "question": "Почему @Transactional работает через прокси?", "answer": "" },
-    { "question": "Почему self-invocation ломает @Transactional?", "answer": "" }
+    { "question": "Почему self-invocation ломает @Transactional?", "answer": "" },
+    { "question": "В чём разница между BeanFactory и ApplicationContext?", "answer": "" },
+    { "question": "Какие этапы жизненного цикла бина существуют в Spring?", "answer": "" },
+    { "question": "Когда и зачем используются BeanPostProcessor?", "answer": "" },
+    { "question": "Чем BeanFactoryPostProcessor отличается от BeanPostProcessor?", "answer": "" },
+    { "question": "Чем @Configuration отличается от @Component?", "answer": "" },
+    { "question": "Зачем нужны @Bean-методы и как они работают?", "answer": "" },
+    { "question": "Какие есть способы конфигурации бинов (XML, Java Config, component scan)?", "answer": "" },
+    { "question": "В каком порядке Spring выбирает способ внедрения зависимостей?", "answer": "" },
+    { "question": "Когда setter-инъекция оправдана?", "answer": "" },
+    { "question": "Почему field injection считается плохой практикой?", "answer": "" },
+    { "question": "Что произойдёт, если в контексте есть два бина одного типа?", "answer": "" },
+    { "question": "Как Spring разрешает неоднозначности при внедрении зависимостей?", "answer": "" },
+    { "question": "Как ведёт себя prototype-бин, внедрённый в singleton?", "answer": "" },
+    { "question": "Какие web-scopes существуют и когда они применяются?", "answer": "" },
+    { "question": "Какие ограничения есть у прокси в Spring (final-классы, final-методы)?", "answer": "" },
+    { "question": "Как Spring выбирает JDK Dynamic Proxy или CGLIB?", "answer": "" },
+    { "question": "Что такое circular dependency и как Spring с ней работает?", "answer": "" },
+    { "question": "В каких случаях Spring не может разрешить циклическую зависимость?", "answer": "" },
+    { "question": "Что делает аннотация @Lazy и когда её имеет смысл использовать?", "answer": "" },
+    { "question": "Для чего используется @DependsOn?", "answer": "" }  
   ]
 }
