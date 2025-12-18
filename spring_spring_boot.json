@@ -2,371 +2,371 @@
   "Spring / Spring Boot": [
     {
       "question": "Какие проблемы у @Scheduled в микросервисах при нескольких инстансах? Как синхронизировать запуск (напр. ShedLock)?",
-      "answer": ""
+      "answer": "Проблема: если сервис запущен в нескольких инстансах, `@Scheduled` будет выполняться *на каждом* инстансе. Это приводит к дублям (двойная отправка писем, повторная обработка, гонки).\n\nСинхронизация:\n- распределённый лок (например, ShedLock с хранением в БД/Redis) — «выполняет только тот, кто взял lock».\n- вынести джобу в отдельный сервис/воркер с одним экземпляром.\n- использовать кластерный scheduler (Quartz clustered) или оркестрацию (K8s CronJob).\n\nВажно: сделать задачу идемпотентной, чтобы дубль не ломал систему."
     },
     {
       "question": "Может ли один сервис работать с двумя БД одновременно и что для этого нужно в Spring?",
-      "answer": ""
+      "answer": "Да. Нужно настроить два `DataSource` (и часто два `EntityManagerFactory`/`TransactionManager`, если JPA).\n\nВ Spring:\n- объявить несколько `DataSource` и пометить основной `@Primary` (или везде использовать `@Qualifier`).\n- для JPA: отдельные `LocalContainerEntityManagerFactoryBean`, `PlatformTransactionManager`, настройка `@EnableJpaRepositories` с разными пакетами.\n\nВажно понимать границы транзакций: «одна транзакция на две БД» требует распределённых транзакций (XA) или проектирования через саги/outbox."
     },
     {
       "question": "Почему вызов @Transactional метода «самого себя» может не сработать?",
-      "answer": ""
+      "answer": "Потому что `@Transactional` работает через Spring AOP-прокси. При self-invocation (когда метод вызывает другой метод того же объекта) вызов идёт напрямую, минуя прокси.\n\nВ итоге транзакционный интерсептор не срабатывает: не создаётся новая транзакция/не применяется propagation."
     },
     {
       "question": "Почему самовызов метода с @Transactional не сработает и как это обойти?",
-      "answer": ""
+      "answer": "Самовызов (внутренний вызов в том же классе) проходит мимо прокси, поэтому `@Transactional` может не примениться.\n\nОбходы:\n- вынести вызываемый метод в другой Spring-бин и вызывать через DI,\n- держать транзакции на публичных методах сервисов (границы use-case),\n- реже: `AopContext.currentProxy()` (обычно не рекомендуют)."
     },
     {
       "question": "Почему транзакции в Spring работают через прокси? Ограничения подхода?",
-      "answer": ""
+      "answer": "Spring добавляет транзакционность без изменения вашего кода через AOP: прокси перехватывает вызов метода и открывает/закрывает транзакцию.\n\nОграничения:\n- работает при вызове *через прокси* (не self-invocation),\n- по умолчанию применяется к public-методам,\n- `final` классы/методы могут мешать CGLIB-прокси,\n- транзакция привязана к потоку (ThreadLocal) — важно при асинхронности."
     },
     {
       "question": "Почему SQL-исключения в Spring видны как непроверяемые? Чем обёртываются SQLException (идея DataAccessException)?",
-      "answer": ""
+      "answer": "Spring переводит `SQLException` в иерархию `DataAccessException` (runtime exceptions). Это делает код чище: не нужно тащить checked-исключения через весь слой.\n\nТакже Spring делает *унифицированный* перевод ошибок разных БД (например, «нарушение уникальности» → `DuplicateKeyException`). Это достигается через `SQLExceptionTranslator`."
     },
     {
       "question": "Распространится ли транзакция на внутренний вызов метода в том же классе и почему?",
-      "answer": ""
+      "answer": "Обычно нет, если это self-invocation: внутренний вызов не проходит через прокси, поэтому `@Transactional` на вызываемом методе не применится.\n\nТранзакция будет «распространяться» только в том смысле, что код выполняется в текущей транзакции, если она уже была открыта внешним вызовом."
     },
     {
       "question": "Распространится ли транзакция на внутренний вызов метода того же класса? Почему (self-invocation, прокси)?",
-      "answer": ""
+      "answer": "Сам аннотированный метод не создаст/не изменит транзакцию при внутреннем вызове, потому что прокси не участвует.\n\nПоэтому propagation (`REQUIRES_NEW` и т.п.) тоже не сработает. Решение — вызывать метод через другой бин (через прокси)."
     },
     {
       "question": "Скоупы бинов: singleton, prototype, web-скоупы — отличия?",
-      "answer": ""
+      "answer": "- `singleton`: один экземпляр бина на `ApplicationContext`.\n- `prototype`: новый экземпляр при каждом запросе из контейнера.\n- web-скоупы (в веб-приложении): `request` (на HTTP-запрос), `session` (на сессию), `application` (на ServletContext), `websocket`.\n\nВажно: `prototype` контейнер *не уничтожает* автоматически (destroy callbacks обычно не вызываются), а web-скоупы требуют web-контекста."
     },
     {
       "question": "Скоупы бинов: singleton, prototype, web-скоупы.",
-      "answer": ""
+      "answer": "Основные scope:\n- `singleton` — один бин на контекст.\n- `prototype` — новый бин на каждое получение.\n\nWeb:\n- `request` — один бин на HTTP-запрос,\n- `session` — один бин на сессию,\n- `application` — один бин на приложение,\n- `websocket` — один бин на websocket-сессию.\n\nДля внедрения web-scoped бинов в singleton обычно используют прокси (`@Scope(proxyMode=...)`)."
     },
     {
       "question": "Способы внедрения зависимостей: поле, конструктор, сеттер — плюсы/минусы?",
-      "answer": ""
+      "answer": "- Конструкторная инъекция: лучший дефолт. Плюсы: зависимости обязательны, объект всегда в валидном состоянии, удобно тестировать, можно `final` поля.\n- Сеттерная: подходит для опциональных зависимостей или когда нужна переинициализация. Минус: объект может быть «полупустым».\n- Полевая (`@Autowired` на поле): коротко, но хуже для тестов и скрывает зависимости; сложнее делать неизменяемые поля.\n\nРекомендация: конструкторная по умолчанию."
     },
     {
       "question": "Чем отличается Java-конфигурация (@Configuration + @Bean) от XML-конфигурации?",
-      "answer": ""
+      "answer": "Java-конфигурация — обычный Java-код: `@Configuration` класс + методы `@Bean`. Плюсы: типобезопасность, рефакторинг, условия (`@Conditional`), проще поддерживать.\n\nXML — декларативная конфигурация в файле. Сейчас используется реже, чаще в легаси.\n\nПо сути оба варианта создают bean definitions, но Java-config лучше интегрируется с современным Spring."
     },
     {
       "question": "Чем REQUIRED отличается от REQUIRES_NEW, NESTED, NEVER, MANDATORY?",
-      "answer": ""
+      "answer": "Это режимы propagation:\n- `REQUIRED` (по умолчанию): присоединиться к текущей транзакции или создать новую.\n- `REQUIRES_NEW`: всегда новая транзакция (текущая приостанавливается).\n- `NESTED`: вложенная транзакция (через savepoint), если поддерживается.\n- `MANDATORY`: требует существующую транзакцию, иначе ошибка.\n- `NEVER`: запрещает транзакцию, иначе ошибка.\n\nВыбор зависит от того, должен ли код быть частью общей транзакции или изолирован."
     },
     {
       "question": "Чем Spring Boot отличается от Spring Framework?",
-      "answer": ""
+      "answer": "Spring Framework — сам фреймворк: DI, AOP, транзакции, MVC и т.д.\n\nSpring Boot — надстройка, которая упрощает запуск и конфигурацию:\n- автоконфигурация,\n- starter-зависимости,\n- встроенный сервер (Tomcat/Jetty/Netty) для запуска как executable JAR,\n- удобные defaults и externalized configuration.\n\nBoot не заменяет Spring — он использует Spring Framework."
     },
     {
       "question": "Что делает @Transactional? Какой default propagation/isolation?",
-      "answer": ""
+      "answer": "`@Transactional` открывает/управляет транзакцией вокруг метода.\n\nПо умолчанию:\n- propagation: `REQUIRED`.\n- isolation: `DEFAULT` (то есть берётся дефолт СУБД).\n\nТакже по умолчанию rollback происходит на `RuntimeException` и `Error`."
     },
     {
       "question": "Что делает @Transactional? Ключевые параметры (propagation, isolation и др.)?",
-      "answer": ""
+      "answer": "`@Transactional` задаёт границы транзакции.\n\nКлючевые параметры:\n- `propagation` — как вести себя при наличии текущей транзакции (`REQUIRED`, `REQUIRES_NEW` и т.д.).\n- `isolation` — уровень изоляции.\n- `readOnly` — режим «только чтение» (оптимизации).\n- `timeout` — таймаут.\n- `rollbackFor`/`noRollbackFor` — правила отката."
     },
     {
       "question": "Что делает аннотация @Transactional? Какие у неё важные параметры (уровень изоляции, propagation и т. п.)?",
-      "answer": ""
+      "answer": "Она включает транзакционное выполнение метода через прокси.\n\nВажные параметры:\n- propagation,\n- isolation,\n- readOnly,\n- timeout,\n- rollbackFor/noRollbackFor.\n\nПрактически: ставят на сервисный метод (use-case), а не на репозиторий «на всякий случай»."
     },
     {
       "question": "Что делает propagation в @Transactional? Когда использовать REQUIRED vs REQUIRES_NEW vs NEVER и т.д.?",
-      "answer": ""
+      "answer": "Propagation определяет, как метод участвует в транзакциях.\n\n- `REQUIRED`: стандартный вариант для бизнес-операций.\n- `REQUIRES_NEW`: когда нужно *обязательно* зафиксировать/откатить часть независимо (например, аудит), но осторожно: может ломать общую атомарность.\n- `NEVER`: когда метод не должен выполняться в транзакции (например, некоторые операции, где транзакция вредна).\n- `MANDATORY`: когда метод имеет смысл только внутри уже начатой транзакции.\n\n`NESTED` используют реже и только если понимают savepoints."
     },
     {
       "question": "Что делает propagation и когда использовать REQUIRED, REQUIRES_NEW, NEVER?",
-      "answer": ""
+      "answer": "- `REQUIRED`: присоединиться или создать новую — дефолт.\n- `REQUIRES_NEW`: всегда отдельная транзакция.\n- `NEVER`: запрещает транзакцию.\n\nОбычно `REQUIRED` для основной бизнес-логики, `REQUIRES_NEW` — точечно для независимой фиксации (например, лог/аудит), `NEVER` — если транзакция мешает (например, долгие внешние операции)."
     },
     {
       "question": "Что делают BeanPostProcessor и BeanFactoryPostProcessor, и когда срабатывает @PostConstruct?",
-      "answer": ""
+      "answer": "- `BeanFactoryPostProcessor` работает *до создания бинов*: меняет bean definitions (метаданные), например добавляет свойства.\n- `BeanPostProcessor` работает *во время создания бинов*: перехватывает бин до/после инициализации (может оборачивать в прокси).\n\n`@PostConstruct` вызывается после того, как бин создан и зависимости внедрены, но до того, как бин станет полностью готов к использованию (после `BeanPostProcessor#postProcessBeforeInitialization`)."
     },
     {
       "question": "Что с уничтожением бина: когда вызывается destroy-колбэк и для каких scope?",
-      "answer": ""
+      "answer": "Destroy-колбэк (`@PreDestroy`, `DisposableBean`, `destroyMethod`) вызывается, когда контейнер закрывается.\n\nДля `singleton` — вызывается при закрытии `ApplicationContext`.\n\nДля `prototype` — контейнер обычно *не вызывает* destroy автоматически (жизненным циклом управляет тот, кто создал/получил бин).\n\nДля web-scopes — уничтожение зависит от завершения запроса/сессии."
     },
     {
       "question": "Что такое «профиль» в Spring? Зачем он нужен?",
-      "answer": ""
+      "answer": "Профили (`@Profile`) позволяют включать/выключать бины и конфигурацию в зависимости от окружения (dev/test/prod).\n\nНапример: в `dev` использовать in-memory БД или мок-клиенты, а в `prod` — реальные интеграции.\n\nАктивируются через `spring.profiles.active`."
     },
     {
       "question": "Что такое инверсия управления (IoC)? За счёт чего она реализована в Spring?",
-      "answer": ""
+      "answer": "IoC — это когда не ваш код создаёт и связывает зависимости, а контейнер.\n\nВ Spring IoC реализован через `ApplicationContext`: он создаёт бины, внедряет зависимости, управляет жизненным циклом и применяет аспекты (AOP).\n\nПо сути: вы описываете «что нужно» (конфигурация/аннотации), а контейнер решает «как собрать»."
     },
     {
       "question": "Что такое Inversion of Control и чем оно отличается от Dependency Injection?",
-      "answer": ""
+      "answer": "IoC — общий принцип: управление созданием/жизненным циклом объектов передано контейнеру.\n\nDI — частный случай IoC: конкретный способ реализовать IoC, когда зависимости *внедряются* в объект (через конструктор/сеттер/поле).\n\nТо есть DI — это техника, IoC — идея шире."
     },
     {
       "question": "Что такое IoC и DI? Как реализовано в Spring?",
-      "answer": ""
+      "answer": "IoC — контейнер управляет созданием и связями объектов.\nDI — внедрение зависимостей в объект.\n\nВ Spring это реализовано через `ApplicationContext`: он находит бины (component scan/`@Bean`), создаёт их, разрешает зависимости (autowiring), применяет пост-процессоры (прокси для `@Transactional`, AOP и т.п.)."
     },
     {
       "question": "Что такое IoC и DI? Чем они отличаются?",
-      "answer": ""
+      "answer": "IoC — принцип «контейнер управляет», DI — способ «контейнер внедряет зависимости». DI обычно понимают как основной механизм реализации IoC в Spring."
     },
     {
       "question": "Что такое Spring AOP, как оно работает (прокси) и какие есть виды advice?",
-      "answer": ""
+      "answer": "Spring AOP — механизм аспектов: позволяет добавлять сквозную логику (транзакции, логирование, метрики) без смешивания с бизнес-кодом.\n\nРаботает через прокси (JDK dynamic proxy или CGLIB): прокси перехватывает вызов метода и выполняет advice.\n\nОсновные виды advice:\n- `@Before`, `@After`, `@AfterReturning`, `@AfterThrowing`, `@Around`.\n\nВ Spring AOP обычно работает на уровне методов Spring-бинов."
     },
     {
       "question": "Что такое Spring Container / ApplicationContext и для чего он нужен?",
-      "answer": ""
+      "answer": "`ApplicationContext` — контейнер Spring: хранит и создаёт бины, внедряет зависимости, управляет жизненным циклом, публикует события, применяет AOP и другие post-processors.\n\nЭто центральная часть Spring-приложения."
     },
     {
       "question": "Что такое Spring-бин?",
-      "answer": ""
+      "answer": "Spring-бин — это объект, которым управляет Spring Container.\n\nОн создаётся контейнером (через component scan или `@Bean`), получает внедрённые зависимости, может быть обёрнут прокси (например, для `@Transactional`), и живёт по правилам scope (singleton/prototype/request...)."
     },
     {
       "question": "В чём разница @Component, @Service, @Repository, @Controller?",
-      "answer": ""
+      "answer": "Все это стереотипы `@Component`.\n\nРазница в семантике:\n- `@Service` — сервисный слой,\n- `@Repository` — слой доступа к данным (плюс включает перевод `SQLException` в `DataAccessException`),\n- `@Controller` — MVC-контроллер (для веба),\n- `@Component` — общий случай.\n\nФункционально для DI похожи, но помогают читаемости и некоторым фичам."
     },
     {
       "question": "В чём разница между singleton и prototype в Spring на практике?",
-      "answer": ""
+      "answer": "`singleton`: один экземпляр на контекст — удобно для stateless сервисов и общих компонентов.\n\n`prototype`: новый экземпляр при каждом получении из контейнера — полезно для объектов с состоянием.\n\nНюанс: если `prototype` внедрён в `singleton`, он создастся один раз при создании singleton. Чтобы получать новый каждый раз, используют `ObjectProvider`, `Provider`, метод lookup, или scoped proxy."
     },
     {
       "question": "Два бина одного типа в контексте: чем грозит при инъекции и как разрешить?",
-      "answer": ""
+      "answer": "Если в контексте несколько бинов одного типа, автосвязывание по типу становится неоднозначным → `NoUniqueBeanDefinitionException`.\n\nРешения:\n- `@Qualifier(\"beanName\")` при внедрении,\n- `@Primary` на бин «по умолчанию»,\n- внедрять `List<T>`/`Map<String, T>` и выбирать вручную."
     },
     {
       "question": "Для чего @PostConstruct и @PreDestroy? Когда уничтожается singleton-бин?",
-      "answer": ""
+      "answer": "`@PostConstruct` — метод, который вызывается после создания бина и внедрения зависимостей (инициализация).\n\n`@PreDestroy` — вызывается перед уничтожением бина (закрытие ресурсов).\n\nSingleton-бин уничтожается при закрытии `ApplicationContext` (например, при остановке приложения)."
     },
     {
       "question": "Для чего нужны аннотации @Component, @Service, @Repository, @Controller?",
-      "answer": ""
+      "answer": "Они помечают классы как кандидаты в Spring-бин и позволяют автоматически зарегистрировать их через component scan.\n\nПлюс дают семантику слоя:\n- `@Repository` включает перевод SQL-исключений,\n- `@Controller` участвует в MVC,\n- `@Service`/`@Component` — логическое разделение."
     },
     {
       "question": "Жизненный цикл бина в Spring и точки расширения (BeanPostProcessor и т.п.)?",
-      "answer": ""
+      "answer": "Упрощённо:\n1) создание экземпляра,\n2) внедрение зависимостей,\n3) вызовы aware-интерфейсов,\n4) `BeanPostProcessor#postProcessBeforeInitialization`,\n5) `@PostConstruct` / `InitializingBean` / init-method,\n6) `BeanPostProcessor#postProcessAfterInitialization` (часто тут создаются прокси),\n7) использование бина,\n8) при закрытии контекста: `@PreDestroy` / destroy-method.\n\nТочки расширения: `BeanFactoryPostProcessor`, `BeanPostProcessor`, события контекста."
     },
     {
       "question": "Жизненный цикл бина: этапы и роль @PostConstruct/@PreDestroy.",
-      "answer": ""
+      "answer": "Этапы: создание → DI → инициализация → использование → уничтожение.\n\n`@PostConstruct` — место для инициализации после DI.\n\n`@PreDestroy` — место для освобождения ресурсов перед остановкой приложения (закрыть соединения, остановить фоновые задачи)."
     },
     {
       "question": "Зачем нужна @Primary и как работает?",
-      "answer": ""
+      "answer": "`@Primary` помечает бин как предпочтительный, если автосвязывание по типу неоднозначно.\n\nТо есть при нескольких бинах одного типа Spring выберет `@Primary`, если не указан `@Qualifier`.\n\nПолезно, когда есть «дефолтная» реализация и альтернативные."
     },
     {
       "question": "Зачем нужно AOP в Spring? Примеры сквозной логики.",
-      "answer": ""
+      "answer": "AOP нужно для сквозной логики, которая повторяется во многих местах, но не относится к бизнес-сущности.\n\nПримеры:\n- транзакции (`@Transactional`),\n- логирование и метрики времени выполнения,\n- аудит (кто и что изменил),\n- security (проверка прав),\n- ретраи/circuit breaker (часто через отдельные библиотеки, но идея та же)."
     },
     {
       "question": "Зачем нужны аннотации @Qualifier и @Primary, где их указывать?",
-      "answer": ""
+      "answer": "Они решают конфликт «несколько бинов одного типа».\n\n- `@Primary` ставят на бин, который должен быть выбран по умолчанию.\n- `@Qualifier` ставят на точке внедрения (конструктор/параметр/поле) или на бин, чтобы явно выбрать нужный.\n\nОбычно: `@Primary` для дефолта, `@Qualifier` — когда нужно выбрать конкретную реализацию."
     },
     {
       "question": "Зачем Java-config с @Configuration и методами @Bean, если есть компонент-сканирование?",
-      "answer": ""
+      "answer": "Component scan удобен для ваших классов, но `@Bean` нужен, когда:\n- вы подключаете сторонний класс (не можете добавить `@Component`),\n- нужна сложная логика создания/условия/параметры,\n- хотите явно контролировать, какой именно бин создаётся.\n\nТо есть scan — для «типовых компонентов», Java-config — для конфигурации и интеграций."
     },
     {
       "question": "Как валидировать входные данные в Spring (Jakarta Bean Validation/аннотации, кастомные валидаторы, параметры запроса и тело)?",
-      "answer": ""
+      "answer": "Обычно используют Jakarta Bean Validation:\n- аннотации: `@NotNull`, `@NotBlank`, `@Size`, `@Min/@Max`, `@Email` и т.д.\n- на `@RequestBody`: `public Response dto(@Valid @RequestBody Dto dto)`.\n- на параметры: `@Validated` на контроллере + аннотации на `@RequestParam/@PathVariable`.\n\nДля кастомных правил: свой `@Constraint` + `ConstraintValidator`.\n\nОшибки обычно ловятся через `MethodArgumentNotValidException`/`ConstraintViolationException` и оформляются `@ControllerAdvice`."
     },
     {
       "question": "Как задать область видимости бина (singleton, prototype и др.)?",
-      "answer": ""
+      "answer": "Через `@Scope`:\n- `@Scope(\"singleton\")` (дефолт),\n- `@Scope(\"prototype\")`,\n- для web: `@RequestScope`, `@SessionScope` или `@Scope(value=\"request\", proxyMode=...)`.\n\nВ Java-config можно указывать scope и для `@Bean` методов."
     },
     {
       "question": "Как запланировать задачу (@Scheduled) и заставить её исполняться только на одном инстансе в кластере?",
-      "answer": ""
+      "answer": "`@Scheduled` планирует выполнение в каждом инстансе.\n\nЧтобы запуск был только один на кластер:\n- использовать распределённый лок (ShedLock) — задача стартует, только если инстанс захватил lock,\n- или вынести выполнение в K8s `CronJob`/отдельный worker,\n- или clustered scheduler (Quartz).\n\nПлюс: сделать задачу идемпотентной и логировать lock/выполнение."
     },
     {
       "question": "Как передать один бин в другой и когда предпочесть конструкторную инъекцию?",
-      "answer": ""
+      "answer": "Передают через DI: контейнер сам подставляет зависимость.\n\nПредпочитать конструкторную инъекцию стоит почти всегда, потому что:\n- зависимости явно видны,\n- можно сделать поля `final`,\n- проще тестировать,\n- объект не может быть создан без обязательных зависимостей.\n\nСеттер/поле — для опциональных зависимостей или легаси."
     },
     {
       "question": "Как сделать асинхронный метод в Spring? Что по умолчанию с пулом потоков у @Async?",
-      "answer": ""
+      "answer": "Нужно включить async (`@EnableAsync`) и пометить метод `@Async`.\n\nМетод может возвращать `void`, `Future`, `CompletableFuture`.\n\nПо умолчанию Spring использует `SimpleAsyncTaskExecutor` (не настоящий пул: может создавать много потоков). В проде обычно задают свой `TaskExecutor` (например, `ThreadPoolTaskExecutor`) и настраивают размеры/очередь."
     },
     {
       "question": "Как управлять порядком инициализации и зависимостями между бинами?",
-      "answer": ""
+      "answer": "Инструменты:\n- обычные зависимости через конструктор (контейнер сам выстроит граф).\n- `@DependsOn` — явно указать, что бин должен создаться после другого.\n- `@Order`/`Ordered` — порядок для коллекций бинов и некоторых расширений.\n- `@Lazy` — отложить создание.\n\nЛучше всего управлять порядком через явные зависимости, а не «магией»."
     },
     {
       "question": "Как Spring в целом включает транзакционную логику (механизм прокси)?",
-      "answer": ""
+      "answer": "`@EnableTransactionManagement` (в Boot обычно включено автоконфигурацией) регистрирует инфраструктуру.\n\nSpring создаёт прокси вокруг бинов с `@Transactional`. Прокси на входе открывает/присоединяет транзакцию через `PlatformTransactionManager`, а на выходе делает `commit` или `rollback`.\n\nТранзакция обычно привязана к текущему потоку через `TransactionSynchronizationManager`."
     },
     {
       "question": "Как Spring находит бины (component scan)?",
-      "answer": ""
+      "answer": "Spring сканирует пакеты (base packages) и ищет классы, помеченные стереотипами (`@Component`, `@Service`, `@Repository`, `@Controller` и др.).\n\nДальше он создаёт bean definitions и регистрирует их в контексте.\n\nПакеты для сканирования задаются через `@ComponentScan` или по умолчанию — от пакета класса с `@SpringBootApplication`."
     },
     {
       "question": "Как Spring находит и регистрирует бины (component scan, конфигурация)?",
-      "answer": ""
+      "answer": "Источники бинов:\n- component scan (классы со стереотипами),\n- `@Configuration` + методы `@Bean`,\n- автоконфигурация Spring Boot,\n- импорт конфигураций (`@Import`).\n\nВ итоге всё превращается в bean definitions, по которым контейнер создаёт объекты и связывает зависимости."
     },
     {
       "question": "Как Spring создаёт и «собирает» бины (bean definition, автосвязывание)?",
-      "answer": ""
+      "answer": "Процесс:\n- Spring формирует `BeanDefinition` (как создать бин).\n- При создании выбирает конструктор, создаёт экземпляр.\n- Разрешает зависимости (по типу/имени/qualifier) и внедряет их.\n- Применяет `BeanPostProcessor` (может обернуть в прокси).\n- Вызывает init-колбэки.\n\nАвтосвязывание (autowiring) чаще всего по типу, при конфликте — `@Qualifier`/`@Primary`."
     },
     {
       "question": "Какие аннотации делают класс кандидатом в бин?",
-      "answer": ""
+      "answer": "Основные:\n- `@Component` и его специализации: `@Service`, `@Repository`, `@Controller`, `@RestController`.\n\nТакже:\n- `@Configuration` (а внутри — `@Bean` методы),\n- некоторые meta-annotations, которые сами помечены `@Component`."
     },
     {
       "question": "Какие две библиотеки проксирования использует Spring (JDK Dynamic Proxies и CGLIB) и чем они отличаются?",
-      "answer": ""
+      "answer": "- JDK Dynamic Proxy: прокси по интерфейсу. Работает только если есть интерфейс.\n- CGLIB: создаёт подкласс (наследование) и переопределяет методы. Работает без интерфейса, но не может проксировать `final` классы/методы.\n\nSpring выбирает JDK-прокси по умолчанию, если есть интерфейс, иначе CGLIB (или можно форсировать через настройки)."
     },
     {
       "question": "Какие есть способы внедрения зависимостей (через конструктор, поле, сеттер)?",
-      "answer": ""
+      "answer": "Три основных:\n- конструкторная,\n- сеттерная,\n- полевая.\n\nПлюс бывают варианты через `@Bean` параметры, `ObjectProvider`/`Provider` для ленивого/множественного выбора."
     },
     {
       "question": "Какие области видимости (scopes) бинов в Spring ты знаешь и каков их жизненный цикл?",
-      "answer": ""
+      "answer": "- `singleton`: создаётся один раз на контекст, уничтожается при закрытии контекста.\n- `prototype`: создаётся при каждом запросе из контейнера, уничтожение контейнер не контролирует.\n\nWeb:\n- `request`: живёт один запрос,\n- `session`: живёт одну сессию,\n- `application`: живёт приложение,\n- `websocket`: живёт websocket-сессию.\n\nWeb-scoped обычно внедряют через прокси."
     },
     {
       "question": "Какие подводные камни проксификации в Spring (самовызов, final-классы/методы)?",
-      "answer": ""
+      "answer": "Основные:\n- self-invocation: внутренние вызовы минуют прокси (важно для `@Transactional`, `@Async`, `@Cacheable`).\n- `final` классы/методы: CGLIB не сможет переопределить метод.\n- private методы не проксируются.\n- транзакции/аспекты привязаны к вызову через Spring-контейнер (не работают для объектов, созданных через `new`)."
     },
     {
       "question": "Какие скоупы бинов знаешь (singleton, prototype, request, session, websocket)?",
-      "answer": ""
+      "answer": "`singleton`, `prototype`, `request`, `session`, `application`, `websocket`.\n\nВ вебе также часто используют `@RequestScope`/`@SessionScope`."
     },
     {
       "question": "Какие скоупы бинов существуют в Spring? Коротко про каждый.",
-      "answer": ""
+      "answer": "- `singleton`: один экземпляр на контейнер.\n- `prototype`: новый экземпляр каждый раз.\n- `request`: один на HTTP-запрос.\n- `session`: один на HTTP-сессию.\n- `application`: один на приложение.\n- `websocket`: один на websocket-сессию."
     },
     {
       "question": "Какие способы внедрения бинов в Spring ты знаешь?",
-      "answer": ""
+      "answer": "Способы инъекции:\n- конструктор,\n- сеттер,\n- поле,\n- через параметры `@Bean` метода,\n- через `ObjectProvider`/`Provider`.\n\nПлюс можно внедрять коллекции `List<T>`/`Map<String,T>`."
     },
     {
       "question": "Какие способы конфигурации бинов в Spring существуют?",
-      "answer": ""
+      "answer": "- аннотации + component scan (`@Component` и т.п.),\n- Java-конфигурация (`@Configuration` + `@Bean`),\n- автоконфигурация Spring Boot,\n- XML (редко),\n- `@Import` для подключения конфигураций."
     },
     {
       "question": "Какими аннотациями создаются бины (@Component, @Service, @Repository, @Controller, @Bean)?",
-      "answer": ""
+      "answer": "- `@Component` и его специализации: `@Service`, `@Repository`, `@Controller`/`@RestController`.\n- `@Bean` внутри `@Configuration`.\n\nОстальные аннотации часто косвенно создают бины через автоконфигурацию/мета-аннотации."
     },
     {
       "question": "Какими способами создать бин в Spring и когда выбирать каждый?",
-      "answer": ""
+      "answer": "- Component scan — когда это ваш класс и он естественно является компонентом приложения.\n- `@Bean` — когда создаёте бин из стороннего класса или нужна кастомная логика/параметры.\n- Автоконфигурация (Boot) — когда используете starter и хотите defaults.\n\nВыбор обычно: scan для бизнес-кода, `@Bean` для интеграций и настройки."
     },
     {
       "question": "Каков порядок/приоритет внедрения: конструктор, сеттер, поле?",
-      "answer": ""
+      "answer": "В контейнере сначала создаётся объект (конструктор), затем выполняется внедрение полей/сеттеров.\n\nС точки зрения best practices приоритет обычно такой:\n1) конструктор (обязательные зависимости),\n2) сеттер (опциональные),\n3) поле (нежелательно).\n\nSpring может выбрать конструктор автоматически (единственный конструктор или отмеченный `@Autowired`)."
     },
     {
       "question": "Какова роль разработчика при Dependency Injection?",
-      "answer": ""
+      "answer": "Разработчик:\n- проектирует зависимости (какие компоненты нужны),\n- определяет границы ответственности (слои),\n- описывает конфигурацию (аннотации/`@Bean`),\n- управляет абстракциями (интерфейсы) и выбирает реализации (`@Qualifier`, `@Primary`).\n\nКонтейнер делает техническую работу: создание, связывание, lifecycle, прокси."
     },
     {
       "question": "Какой основной принцип в Spring (IoC/DI)? Как стартует контейнер и каков жизненный цикл бина?",
-      "answer": ""
+      "answer": "Основной принцип — IoC/DI: контейнер управляет объектами и внедряет зависимости.\n\nКонтейнер стартует созданием `ApplicationContext`: читает конфигурацию, регистрирует bean definitions, затем создаёт singleton-бины (обычно при старте).\n\nЖизненный цикл бина: создание → DI → post-processors → init (`@PostConstruct`) → использование → destroy (`@PreDestroy`) при закрытии контекста."
     },
     {
       "question": "Кто обрабатывает аннотации/хуки (BeanPostProcessor и пр.)?",
-      "answer": ""
+      "answer": "Аннотации и хуки обрабатывают инфраструктурные бины Spring:\n- `BeanFactoryPostProcessor`/`BeanPostProcessor`,\n- разные `*AnnotationBeanPostProcessor` (например, для `@Autowired`, `@PostConstruct`),\n- `TransactionAnnotationBeanPostProcessor`/AOP инфраструктура для `@Transactional`.\n\nИдея: это плагины контейнера, которые вмешиваются в создание бинов."
     },
     {
       "question": "Опиши жизненный цикл бина. Зачем разделение на *BeforeInitialization и *AfterInitialization у BeanPostProcessor?",
-      "answer": ""
+      "answer": "Жизненный цикл: instantiate → populate properties → aware callbacks → `postProcessBeforeInitialization` → init (`@PostConstruct`) → `postProcessAfterInitialization` → ready.\n\nРазделение нужно, чтобы:\n- до init можно подготовить бин (например, внедрить что-то дополнительно),\n- после init можно обернуть бин прокси (часто AOP делает это в `AfterInitialization`).\n\nТак инфраструктура может корректно влиять на объект на разных этапах."
     },
     {
       "question": "Какой Propagation по умолчанию? Какие ещё варианты propagation и когда их применять?",
-      "answer": ""
+      "answer": "По умолчанию `REQUIRED`.\n\nЕщё часто:\n- `REQUIRES_NEW` — отдельная транзакция для изолированной части,\n- `MANDATORY` — метод должен быть внутри транзакции,\n- `SUPPORTS` — работает в транзакции, если она есть,\n- `NOT_SUPPORTED`/`NEVER` — выключают транзакцию,\n- `NESTED` — вложенная через savepoint.\n\nНа практике чаще всего хватает `REQUIRED` + точечно `REQUIRES_NEW`."
     },
     {
       "question": "Нужно ли вешать @Transactional на сервисный метод, если внутри JpaRepository.save()? Как транзакции работают по умолчанию в Spring Data?",
-      "answer": ""
+      "answer": "В Spring Data многие методы репозитория уже транзакционные (обычно `@Transactional` на записи и `@Transactional(readOnly=true)` на чтение).\n\nНо на уровне бизнес-операции `@Transactional` на сервисе всё равно часто нужен, если:\n- операция состоит из нескольких репозиторных вызовов, которые должны быть атомарны,\n- нужно управлять propagation/isolation/timeout.\n\nПравило: транзакции ставят на границы use-case (сервис), а не размазывают по мелким методам."
     },
     {
       "question": "Чем работаете с БД (Spring Data JPA/JdbcTemplate)? Как пишете запросы (@Query, метод-нейминг)?",
-      "answer": ""
+      "answer": "Обычно:\n- Spring Data JPA для CRUD и типовых запросов.\n- `JdbcTemplate`/`NamedParameterJdbcTemplate` для сложных SQL, отчётов, batch и полного контроля.\n\nВ Spring Data запросы пишут:\n- method naming (`findByStatusAndCreatedAtAfter(...)`),\n- `@Query` (JPQL или native),\n- `Specification`/Criteria API для динамики."
     },
     {
       "question": "В чём разница между Spring и Spring Boot?",
-      "answer": ""
+      "answer": "Spring — фреймворк и набор модулей.\n\nSpring Boot — надстройка, которая ускоряет старт:\n- starter-зависимости,\n- автоконфигурация,\n- встроенный сервер,\n- defaults и внешняя конфигурация.\n\nТо есть Boot = Spring + удобные соглашения и инструменты."
     },
     {
       "question": "Где рекомендуется располагать класс с @SpringBootApplication и почему?",
-      "answer": ""
+      "answer": "Обычно — в корневом пакете приложения (самом верхнем), потому что `@SpringBootApplication` включает component scan по пакету этого класса и его подпакетам.\n\nЕсли положить класс слишком глубоко, часть компонентов может не попасть в сканирование, и бины не зарегистрируются."
     },
     {
       "question": "Зачем @ConditionalOnProperty и как ею включать/выключать функциональность?",
-      "answer": ""
+      "answer": "`@ConditionalOnProperty` включает конфигурацию/бин только если задано свойство с нужным значением.\n\nНапример:\n- включить: `feature.x.enabled=true`\n- в конфиге: `@ConditionalOnProperty(name=\"feature.x.enabled\", havingValue=\"true\", matchIfMissing=false)`\n\nЭто удобно для feature toggles, окружений и отключения интеграций."
     },
     {
       "question": "Зачем нужен Spring Boot по сравнению с «голым» Spring?",
-      "answer": ""
+      "answer": "Boot убирает много рутины:\n- автоконфигурация вместо ручной настройки,\n- starters вместо ручного подбора зависимостей,\n- встроенный сервер и простой запуск,\n- единый способ конфигурации (properties/yaml/env),\n- Actuator и production-ready фичи.\n\nВ итоге быстрее старт проекта и меньше конфигурационного кода."
     },
     {
       "question": "Зачем нужны Starter’ы и что они делают кроме «подтянуть зависимости»?",
-      "answer": ""
+      "answer": "Starter — это набор зависимостей «под задачу» (web, data, security...).\n\nКроме зависимостей, стартеры запускают автоконфигурацию: подключают нужные бины и defaults через `spring-boot-autoconfigure`.\n\nТо есть стартер — это «подключил зависимость → получил готовую настройку»."
     },
     {
       "question": "Зачем появился Spring Boot по сравнению с Spring? Чем он лучше (стары, автоконфигурация, встроенный контейнер)?",
-      "answer": ""
+      "answer": "Boot появился, чтобы стандартизировать и упростить разработку:\n- starters дают согласованный набор зависимостей,\n- автоконфигурация убирает ручную настройку,\n- встроенный контейнер позволяет запускать приложение как обычный JAR,\n- внешняя конфигурация и профили упрощают деплой.\n\nЭто снижает время на старт и количество «боилерплейта»."
     },
     {
       "question": "Зачем Spring Boot BOM (bill of materials) и чем он полезен?",
-      "answer": ""
+      "answer": "BOM фиксирует совместимые версии зависимостей.\n\nПольза:\n- меньше конфликтов версий,\n- не нужно указывать версии у каждого стартера/библиотеки,\n- обновления делаются централизованно (обновил версию Boot → обновились зависимые версии).\n\nВ Maven это обычно `spring-boot-dependencies`."
     },
     {
       "question": "Как в Spring Boot встраивается и запускается Tomcat по умолчанию?",
-      "answer": ""
+      "answer": "При использовании `spring-boot-starter-web` Boot по умолчанию подключает embedded Tomcat.\n\nПри запуске `main()` Boot создаёт `ApplicationContext`, затем стартует embedded web server и поднимает `DispatcherServlet`.\n\nСервер можно заменить на Jetty/Undertow или на reactive stack (Netty) через соответствующие стартеры."
     },
     {
       "question": "Как отключить/включить бин в зависимости от окружения (профили, @Conditional, свойства)?",
-      "answer": ""
+      "answer": "Основные способы:\n- `@Profile(\"dev\")`/`@Profile(\"prod\")`.\n- `@ConditionalOnProperty` по свойствам.\n- другие `@Conditional*` (по классу, по бину и т.д.).\n\nОкружение задают через `spring.profiles.active` и конфигурацию (yaml/properties/env vars)."
     },
     {
       "question": "Как работают сервлеты при деплое как JAR без внешнего Tomcat?",
-      "answer": ""
+      "answer": "Boot запускает встроенный servlet-контейнер (Tomcat по умолчанию) внутри процесса JVM.\n\n`DispatcherServlet` регистрируется как обычный servlet, но контейнер не внешний, а embedded.\n\nТо есть это тот же servlet API, просто сервер «встроен» в приложение."
     },
     {
       "question": "Как собрать Spring Boot как WAR и когда это нужно?",
-      "answer": ""
+      "answer": "WAR нужен, когда вы деплоите приложение в внешний application server (внешний Tomcat) или так требует инфраструктура.\n\nОбычно:\n- изменить packaging на `war`,\n- пометить embedded Tomcat как `provided`,\n- сделать класс, который наследуется от `SpringBootServletInitializer` и переопределить `configure(...)`.\n\nДля современного деплоя чаще используют executable JAR + Docker."
     },
     {
       "question": "Как Spring Boot определяет, где сканировать бины без явного @ComponentScan?",
-      "answer": ""
+      "answer": "`@SpringBootApplication` включает `@ComponentScan` с base package = пакет класса, где стоит эта аннотация.\n\nТо есть по умолчанию сканируются этот пакет и все подпакеты.\n\nЕсли нужно иначе — используют `@ComponentScan(basePackages=...)` или `@SpringBootApplication(scanBasePackages=...)`."
     },
     {
       "question": "Какие задачи решает Spring Boot помимо стартеров?",
-      "answer": ""
+      "answer": "Кроме starters, Boot даёт:\n- автоконфигурацию,\n- embedded server,\n- внешнюю конфигурацию и профили,\n- production-ready инструменты (Actuator),\n- удобный запуск (`main`),\n- интеграцию с логированием, метриками, health-check.\n\nИ стандартные defaults «из коробки»."
     },
     {
       "question": "Какие стартеры Spring Boot используешь (web, data, test, logging и др.)?",
-      "answer": ""
+      "answer": "Типично используют:\n- `spring-boot-starter-web` (MVC + Tomcat),\n- `spring-boot-starter-data-jpa` (JPA/Hibernate),\n- `spring-boot-starter-validation`,\n- `spring-boot-starter-security` (если нужно),\n- `spring-boot-starter-test` (JUnit/Mockito и т.п.),\n- `spring-boot-starter-actuator`.\n\nДля reactive: `spring-boot-starter-webflux`."
     },
     {
       "question": "Какие Spring Boot-стартеры кладёшь в типичный бэкенд и зачем каждый?",
-      "answer": ""
+      "answer": "Типичный набор:\n- `starter-web` — REST/MVC,\n- `starter-data-jpa` — ORM и репозитории,\n- драйвер БД (postgres),\n- `starter-validation` — валидация входных DTO,\n- `starter-actuator` — health/metrics,\n- `starter-test` — тестирование.\n\nОпционально: security, cache, messaging (kafka/rabbit), webflux."
     },
     {
       "question": "Основные преимущества Spring Boot (executable JAR vs WAR, BOM, стартеры/автоконфигурация, централизованная конфигурация)?",
-      "answer": ""
+      "answer": "Преимущества:\n- executable JAR (быстрый запуск, удобно в контейнерах),\n- starters + автоконфигурация → меньше ручной настройки,\n- BOM → совместимые версии,\n- централизованная внешняя конфигурация (properties/yaml/env),\n- production-ready фичи (Actuator).\n\nЭто ускоряет разработку и упрощает деплой."
     },
     {
       "question": "Почему Spring Boot удобен для докеризации приложений?",
-      "answer": ""
+      "answer": "Потому что приложение — это самодостаточный executable JAR со встроенным сервером.\n\nВ Docker это удобно: один процесс, простой `ENTRYPOINT java -jar app.jar`, конфигурация через env vars/`application.yml`, health-check через Actuator.\n\nПлюс Boot поддерживает понятные профили и настройки портов/логов."
     },
     {
       "question": "Чем Spring Boot отличается от Spring? Что такое автоконфигурация?",
-      "answer": ""
+      "answer": "Spring Boot добавляет автоконфигурацию и соглашения поверх Spring.\n\nАвтоконфигурация — механизм, который автоматически создаёт и настраивает бины на основе classpath (какие зависимости подключены) и настроек (`application.yml`).\n\nТо есть вы «подключили starter» и получили готовые бины без ручной конфигурации."
     },
     {
       "question": "Что даёт Spring Boot по сравнению с «чистым» Spring?",
-      "answer": ""
+      "answer": "Boot даёт готовые defaults и инфраструктуру: автоконфигурацию, стартеры, BOM, embedded server, profiles/config, Actuator.\n\nВ чистом Spring многое нужно настраивать вручную (или собирать свою «платформу»)."
     },
     {
       "question": "Что такое автоконфигурация и чем она отличается от обычной конфигурации?",
-      "answer": ""
+      "answer": "Обычная конфигурация — вы явно описываете бины (`@Configuration` + `@Bean`).\n\nАвтоконфигурация — Spring Boot сам добавляет конфигурации (условно) при наличии определённых классов/свойств, используя `@Conditional...`.\n\nОна включается автоматически и может быть переопределена вашими `@Bean` или настройками."
     },
     {
       "question": "Что такое автоконфигурация? Как её отключить/переопределить?",
-      "answer": ""
+      "answer": "Автоконфигурация — автоматическое подключение конфигураций Boot по условиям (classpath + properties).\n\nОтключить/ограничить можно:\n- `exclude` в `@SpringBootApplication` или `@EnableAutoConfiguration(exclude=...)`,\n- свойствами (некоторые автоконфиги включаются/выключаются через `...enabled=false`).\n\nПереопределить можно:\n- объявив свой `@Bean` того же типа,\n- изменив properties,\n- используя `@Primary`/`@Qualifier` при необходимости."
     },
     {
       "question": "Что такое стартеры Spring Boot и автоконфигурация? Чем она отличается от обычной конфигурации?",
-      "answer": ""
+      "answer": "Стартеры — «пакет зависимостей под задачу».\n\nАвтоконфигурация — набор конфигураций, которые Boot подключает автоматически (по условиям), создавая нужные бины.\n\nОтличие от обычной конфигурации: вы меньше пишете `@Bean` руками — Boot делает это сам, но вы можете переопределить defaults."
     },
     {
       "question": "Приходилось ли работать с аспектами (AOP)? Как реализовать аспект для логирования времени выполнения метода?",
-      "answer": ""
+      "answer": "Да. Обычно делают `@Aspect` с `@Around` advice:\n- в `@Around` фиксируем время до/после `proceed()` и логируем длительность.\n\nТочку среза задают через pointcut (например, по аннотации или по пакету: `execution(* com.example.service..*(..))`).\n\nВажно: аспект работает через прокси, поэтому действуют те же ограничения (self-invocation и т.п.)."
     }
   ]
 }
